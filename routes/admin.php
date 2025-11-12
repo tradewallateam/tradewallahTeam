@@ -5,11 +5,15 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::controller(LoginController::class)->prefix('auth/admin')->group(function () {
-    Route::get('login', 'showLoginForm')->name('auth.admin.login.form');
-    Route::post('login', 'login')->name('auth.admin.login.submit');
+Route::controller(LoginController::class)->prefix('auth/admin')->name('auth.admin.login.')->group(function () {
+    Route::get('login', 'showLoginForm')->name('form');
+    Route::post('login', 'login')->name('submit');
 });
 
-Route::controller(DashboardController::class)->prefix('admin')->group(function () {
-    Route::get('dashboard', 'index')->name('admin.dashboard');
+Route::middleware(['auth.check'])->prefix('admin')->name('admin.')->group(function () {
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('dashboard', 'index')->name('dashboard');
+
+        Route::get('logout/{id}', 'logout')->name('logout');
+    });
 });

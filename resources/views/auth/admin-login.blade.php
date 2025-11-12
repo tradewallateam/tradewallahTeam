@@ -11,9 +11,7 @@
 
 <body>
     <div class="login-form">
-        <div class="text">
-            LOGIN
-        </div>
+        <div class="text">LOGIN</div>
         <form action="{{ route('auth.admin.login.submit') }}" method="POST">
             @csrf
             <div class="field">
@@ -40,7 +38,6 @@
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     @if (session('success'))
         <script>
             Swal.fire({
@@ -59,7 +56,7 @@
                 icon: 'error',
                 title: 'Failed',
                 text: '{{ session('failed') }}',
-                // timer: 3000,
+                timer: 3000,
                 timerProgressBar: true,
                 showConfirmButton: false
             });

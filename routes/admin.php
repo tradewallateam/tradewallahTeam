@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,5 +16,9 @@ Route::middleware(['auth.check'])->prefix('admin')->name('admin.')->group(functi
         Route::get('dashboard', 'index')->name('dashboard');
 
         Route::get('logout/{id}', 'logout')->name('logout');
+    });
+
+    Route::controller(MemberController::class)->group(function () {
+        Route::get('members', 'index')->name('members');
     });
 });

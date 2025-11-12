@@ -1,10 +1,10 @@
 <!-- partial:partials/_sidebar.html -->
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-        <a class="sidebar-brand brand-logo" href="index.html"><img src="{{ asset('assets/images/logo.svg') }}"
-                alt="logo" /></a>
-        <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="{{ asset('assets/images/logo-mini.svg') }}"
-                alt="logo" /></a>
+        <a class="sidebar-brand brand-logo" href="{{ route('admin.dashboard') }}"><img
+                src="{{ asset('assets/images/logo.svg') }}" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo-mini" href="{{ route('admin.dashboard') }}"><img
+                src="{{ asset('assets/images/logo-mini.svg') }}" alt="logo" /></a>
     </div>
     <ul class="nav">
         <li class="nav-item profile">
@@ -16,8 +16,8 @@
                         <span class="count bg-success"></span>
                     </div>
                     <div class="profile-name">
-                        <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
-                        <span>Gold Member</span>
+                        <h5 class="mb-0 font-weight-normal">Jhon Doe</h5>
+                        <span>Admin</span>
                     </div>
                 </div>
                 <a href="#" id="profile-dropdown" data-bs-toggle="dropdown"><i
@@ -45,24 +45,14 @@
                             <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
                         </div>
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item preview-item">
-                        <div class="preview-thumbnail">
-                            <div class="preview-icon bg-dark rounded-circle">
-                                <i class="mdi mdi-calendar-today text-success"></i>
-                            </div>
-                        </div>
-                        <div class="preview-item-content">
-                            <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
-                        </div>
-                    </a>
+
                 </div>
             </div>
         </li>
         <li class="nav-item nav-category">
             <span class="nav-link">Navigation</span>
         </li>
-        <li class="nav-item menu-items active">
+        <li class="nav-item menu-items {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.dashboard') }}">
                 <span class="menu-icon">
                     <i class="mdi mdi-speedometer"></i>
@@ -70,24 +60,15 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-        <li class="nav-item menu-items">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                aria-controls="ui-basic">
+        <li class="nav-item menu-items {{ request()->routeIs('admin.members') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.members') }}">
                 <span class="menu-icon">
-                    <i class="mdi mdi-laptop"></i>
+                    <i class="mdi mdi-speedometer"></i>
                 </span>
-                <span class="menu-title">Basic UI Elements</span>
-                <i class="menu-arrow"></i>
+                <span class="menu-title">Registered Member</span>
             </a>
-            <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
-                    </li>
-                </ul>
-            </div>
         </li>
+
         <li class="nav-item menu-items">
             <a class="nav-link" href="pages/forms/basic_elements.html">
                 <span class="menu-icon">
@@ -125,8 +106,7 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false"
-                aria-controls="auth">
+            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <span class="menu-icon">
                     <i class="mdi mdi-security"></i>
                 </span>

@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.css" />
 </head>
 
 <body>
@@ -66,6 +68,15 @@
     <script src="{{ asset('assets/js/proBanner.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
     <!-- End custom js for this page -->
+    <script src="https://cdn.datatables.net/2.3.5/js/dataTables.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                responsive: true
+            });
+        });
+    </script>
 </body>
 
 </html>

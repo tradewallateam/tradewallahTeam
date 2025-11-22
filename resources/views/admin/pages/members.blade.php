@@ -16,56 +16,34 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">All Registered Member</h4>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
+                        <table class="table table-bordered" id="table">
+                            <thead>
+                                <tr>
+                                    <th>S.N.</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Mobile Number</th>
+                                    <th>Address</th>
+                                    <th>Status</th>
+                                    <th>Created At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($members as $index => $value)
                                     <tr>
-                                        <th>S.N.</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Mobile Number</th>
-                                        <th>Address</th>
-                                        <th>Status</th>
-                                        <th>Created At</th>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $value->name }}</td>
+                                        <td>{{ $value->email }}</td>
+                                        <td>{{ $value->phone_number }}</td>
+                                        <td>{{ $value->address }}</td>
+                                        <td><label
+                                                class="badge badge-{{ $value->status ? 'success' : 'warning' }}">{{ $value->status ? 'Active' : 'Inactive' }}</label>
+                                        </td>
+                                        <td>{{ $value->created_at }}</td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Jacob</td>
-                                        <td>53275531</td>
-                                        <td>53275531</td>
-                                        <td>53275531</td>
-                                        <td>53275531</td>
-                                        <td>12 May 2017</td>
-                                        <td><label class="badge badge-danger">Pending</label></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Messsy</td>
-                                        <td>53275532</td>
-                                        <td>15 May 2017</td>
-                                        <td><label class="badge badge-warning">In progress</label></td>
-                                    </tr>
-                                    <tr>
-                                        <td>John</td>
-                                        <td>53275533</td>
-                                        <td>14 May 2017</td>
-                                        <td><label class="badge badge-info">Fixed</label></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Peter</td>
-                                        <td>53275534</td>
-                                        <td>16 May 2017</td>
-                                        <td><label class="badge badge-success">Completed</label></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dave</td>
-                                        <td>53275535</td>
-                                        <td>20 May 2017</td>
-                                        <td><label class="badge badge-warning">In progress</label></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

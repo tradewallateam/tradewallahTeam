@@ -11,7 +11,7 @@ Route::controller(LoginController::class)->prefix('auth/admin')->name('auth.admi
     Route::post('login', 'login')->name('submit');
 });
 
-Route::middleware(['auth.check'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.')->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('dashboard', 'index')->name('dashboard');
 

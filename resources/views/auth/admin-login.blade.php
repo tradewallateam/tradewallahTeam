@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Glowing Inputs Login Form UI</title>
+    <title>Tradingwallah | Login</title>
     <link rel="stylesheet" href="{{ asset('assets/css/login/admin/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
@@ -44,9 +44,8 @@
                 icon: 'success',
                 title: 'Success',
                 text: '{{ session('success') }}',
-                // timer: 3000,
                 timerProgressBar: true,
-                showConfirmButton: false
+                showConfirmButton: true
             });
         </script>
     @endif
@@ -56,9 +55,8 @@
                 icon: 'error',
                 title: 'Failed',
                 text: '{{ session('failed') }}',
-                timer: 3000,
                 timerProgressBar: true,
-                showConfirmButton: false
+                showConfirmButton: true
             });
         </script>
     @endif

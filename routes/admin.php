@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CMSController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Auth\LoginController;
@@ -20,5 +21,15 @@ Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.'
 
     Route::controller(MemberController::class)->group(function () {
         Route::get('members', 'index')->name('members');
+    });
+
+    Route::controller(CMSController::class)->prefix('pages')->name('pages.')->group(function () {
+        Route::prefix('cms')->name('cms.')->group(function () {
+            Route::get('manage-header', 'manageHeader')->name('manage-header');
+            Route::post('update-header', 'updateHeader')->name('update-header');
+
+            Route::get('manage-social-media', 'manageSocialMedia')->name('manage-social-media');
+            Route::post('update-footer', 'updateFooter')->name('update-footer');
+        });
     });
 });

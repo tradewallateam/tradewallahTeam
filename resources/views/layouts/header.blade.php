@@ -15,7 +15,7 @@
                     <div class="d-inline-flex align-items-center" style="height: 45px;">
                         <a href="#"><small class="me-3 text-dark"><i
                                     class="fa fa-user text-primary me-2"></i>Register</small></a>
-                        <a href="#" class="loginModal"><small class="me-3 text-dark"><i
+                        <a href="#"><small class="me-3 text-dark"><i
                                     class="fa fa-sign-in-alt text-primary me-2"></i>Login</small></a>
                         <div class="dropdown">
                             <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown"><small><i

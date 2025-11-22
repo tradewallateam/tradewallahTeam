@@ -161,6 +161,19 @@
                 <span class="menu-title">Manage Pages</span>
             </a>
         </li>
+        <li class="nav-item menu-items {{ request()->routeIs('admin.pages.cms.manage-header') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.pages.cms.manage-header') }}">
+                <span class="menu-icon"><i class="mdi mdi-file-document"></i></span>
+                <span class="menu-title">Manage Header</span>
+            </a>
+        </li>
+        <li
+            class="nav-item menu-items {{ request()->routeIs('admin.pages.cms.manage-social-media') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.pages.cms.manage-social-media') }}">
+                <span class="menu-icon"><i class="mdi mdi-file-document"></i></span>
+                <span class="menu-title">Manage Social Media</span>
+            </a>
+        </li>
 
 
         {{-- Settings --}}

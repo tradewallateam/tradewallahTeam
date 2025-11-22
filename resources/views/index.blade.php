@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('main-content')
+    <div class="container-fluid position-relative p-0">
+
+        @include('layouts.navbar')
+
+        @include('layouts.carousel')
+
+    </div>
+
     <!-- Abvout Start -->
     <div class="container-fluid about py-5">
         <div class="container py-5">
@@ -52,15 +60,16 @@
                         <img src="{{ asset('assets/images/about-2.png') }}" class="img-fluid rounded w-100" alt="">
 
                         <div class="" style="position: absolute; top: -15px; right: -15px;">
-                            <img src="{{ asset('assets/images/about-3.png') }}" class="img-fluid" style="width: 150px; height: 150px; opacity: 0.7;"
-                                alt="">
+                            <img src="{{ asset('assets/images/about-3.png') }}" class="img-fluid"
+                                style="width: 150px; height: 150px; opacity: 0.7;" alt="">
                         </div>
                         <div class="" style="position: absolute; top: -20px; left: 10px; transform: rotate(90deg);">
-                            <img src="{{ asset('assets/images/about-4.png') }}" class="img-fluid" style="width: 100px; height: 150px; opacity: 0.9;"
-                                alt="">
+                            <img src="{{ asset('assets/images/about-4.png') }}" class="img-fluid"
+                                style="width: 100px; height: 150px; opacity: 0.9;" alt="">
                         </div>
                         <div class="rounded-bottom">
-                            <img src="{{ asset('assets/images/about-5.jpg') }}" class="img-fluid rounded-bottom w-100" alt="">
+                            <img src="{{ asset('assets/images/about-5.jpg') }}" class="img-fluid rounded-bottom w-100"
+                                alt="">
                         </div>
                     </div>
                 </div>
@@ -84,7 +93,8 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('assets/images/service-1.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/images/service-1.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4"> Strategy Consulting</a>
@@ -98,7 +108,8 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('assets/images/service-2.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/images/service-2.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Financial Advisory</a>
@@ -112,7 +123,8 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('assets/images/service-3.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/images/service-3.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Managements</a>
@@ -126,7 +138,8 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('assets/images/service-4.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/images/service-4.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Supply Optimization</a>
@@ -140,7 +153,8 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('assets/images/service-5.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/images/service-5.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Hr Consulting</a>
@@ -154,7 +168,8 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('assets/images/service-6.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('assets/images/service-6.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Marketing Consulting</a>
@@ -184,7 +199,8 @@
             <div class="owl-carousel blog-carousel wow fadeInUp" data-wow-delay="0.2s">
                 <div class="blog-item p-4">
                     <div class="blog-img mb-4">
-                        <img src="{{ asset('assets/images/service-1.jpg') }}" class="img-fluid w-100 rounded" alt="">
+                        <img src="{{ asset('assets/images/service-1.jpg') }}" class="img-fluid w-100 rounded"
+                            alt="">
                         <div class="blog-title">
                             <a href="#" class="btn">Dividend Stocks</a>
                         </div>
@@ -204,7 +220,8 @@
                 </div>
                 <div class="blog-item p-4">
                     <div class="blog-img mb-4">
-                        <img src="{{ asset('assets/images/service-2.jpg') }}" class="img-fluid w-100 rounded" alt="">
+                        <img src="{{ asset('assets/images/service-2.jpg') }}" class="img-fluid w-100 rounded"
+                            alt="">
                         <div class="blog-title">
                             <a href="#" class="btn">Non-Dividend Stocks</a>
                         </div>
@@ -224,7 +241,8 @@
                 </div>
                 <div class="blog-item p-4">
                     <div class="blog-img mb-4">
-                        <img src="{{ asset('assets/images/service-3.jpg') }}" class="img-fluid w-100 rounded" alt="">
+                        <img src="{{ asset('assets/images/service-3.jpg') }}" class="img-fluid w-100 rounded"
+                            alt="">
                         <div class="blog-title">
                             <a href="#" class="btn">Dividend Stocks</a>
                         </div>
@@ -244,7 +262,8 @@
                 </div>
                 <div class="blog-item p-4">
                     <div class="blog-img mb-4">
-                        <img src="{{ asset('assets/images/service-4.jpg') }}" class="img-fluid w-100 rounded" alt="">
+                        <img src="{{ asset('assets/images/service-4.jpg') }}" class="img-fluid w-100 rounded"
+                            alt="">
                         <div class="blog-title">
                             <a href="#" class="btn">Non-Dividend Stocks</a>
                         </div>

@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
 
     <!-- Icon Font Stylesheet -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
@@ -31,6 +31,14 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('assets/css/frontend-style.css') }}" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <!-- jQuery Modal Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
 </head>
 
 <body>
@@ -46,20 +54,11 @@
 
     @include('layouts.header')
 
-    <!-- Navbar & Hero Start -->
-    <div class="container-fluid position-relative p-0">
-
-        @include('layouts.navbar')
-
-        @include('layouts.carousel')
-
-    </div>
-    <!-- Navbar & Hero End -->
-
     @yield('main-content')
 
 
     @include('layouts.footer')
+    @include('layouts.partial-model')
 
     <!-- Copyright Start -->
     <div class="container-fluid copyright py-4">
@@ -99,18 +98,6 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
-
-    <!-- Remember to include jQuery :) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-
-    <!-- jQuery Modal -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-
-    <script>
-        $(".loginModal").modal({
-            fadeDuration: 100
-        });
-    </script>
 
 </body>
 

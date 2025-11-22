@@ -24,10 +24,15 @@
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
 
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.css" />
+
+    <!-- script query for sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <div class="container-scroller">
+
+        @include('admin.layouts.session-message')
 
         @include('admin.layouts.sidebar')
 
@@ -52,7 +57,6 @@
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="{{ asset('assets/vendors/chart.js/chart.umd.js') }}"></script>
-    <script src="{{ asset('assets/vendors/progressbar.js/progressbar.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
     <script src="{{ asset('assets/vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
@@ -65,11 +69,14 @@
     <script src="{{ asset('assets/js/todolist.js') }}"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="{{ asset('assets/js/proBanner.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/proBanner.js') }}"></script> --}}
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
     <!-- End custom js for this page -->
     <script src="https://cdn.datatables.net/2.3.5/js/dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#table').DataTable({

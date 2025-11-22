@@ -1,6 +1,6 @@
  <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
      <a href="" class="navbar-brand p-0">
-         <h1 class="text-primary"><i class="fas fa-search-dollar me-3"></i>Stocker</h1>
+         <h1 class="text-primary"><i class="fab fa-trade-federation  me-3"></i>Tradewalla</h1>
          <!-- <img src="img/logo.png" alt="Logo"> -->
      </a>
      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -8,22 +8,20 @@
      </button>
      <div class="collapse navbar-collapse" id="navbarCollapse">
          <div class="navbar-nav ms-auto py-0">
-             <a href="index.html" class="nav-item nav-link active">Home</a>
-             <a href="about.html" class="nav-item nav-link">About</a>
+             <a href="{{ route('pages.home') }}"
+                 class="nav-item nav-link {{ request()->routeIs('pages.home') ? 'active' : '' }}">Home</a>
+             <a href="{{ route('pages.about') }}"
+                 class="nav-item nav-link {{ request()->routeIs('pages.about') ? 'active' : '' }}">About</a>
+             <a href="{{ route('pages.about') }}"
+                 class="nav-item nav-link {{ request()->routeIs('pages.about') ? 'active' : '' }}">FAQ Section</a>
+             <a href="{{ route('pages.about') }}"
+                 class="nav-item nav-link {{ request()->routeIs('pages.about') ? 'active' : '' }}">Risk Disclaimer</a>
+             <a href="{{ route('pages.about') }}"
+                 class="nav-item nav-link {{ request()->routeIs('pages.about') ? 'active' : '' }}">Pricing Page</a>
              <a href="service.html" class="nav-item nav-link">Services</a>
-             <div class="nav-item dropdown">
-                 <a href="#" class="nav-link" data-bs-toggle="dropdown">
-                     <span class="dropdown-toggle">Pages</span>
-                 </a>
-                 <div class="dropdown-menu m-0">
-                     <a href="blog.html" class="dropdown-item">Blog</a>
-                     <a href="team.html" class="dropdown-item">Our team</a>
-                     <a href="404.html" class="dropdown-item">404 Page</a>
-                 </div>
-             </div>
              <a href="contact.html" class="nav-item nav-link">Contact Us</a>
          </div>
-         <a href="https://htmlcodex.com/downloading/?item=3447"
-             class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Buy Pro Version</a>
+         <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Request for
+             Query</a>
      </div>
  </nav>

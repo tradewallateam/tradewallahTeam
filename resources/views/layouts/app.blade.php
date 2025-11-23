@@ -66,13 +66,11 @@
             <div class="row g-4 align-items-center">
                 <div class="col-md-6 text-center text-md-start mb-md-0">
                     <span class="text-body"><a href="#" class="border-bottom text-white"><i
-                                class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right
+                                class="fas fa-copyright text-light me-2"></i>TradeWalla</a>, All right
                         reserved.</span>
                 </div>
                 <div class="col-md-6 text-center text-md-end text-body">
-                    <!--/*** The author’s attribution link must remain intact in the template. ***/-->
-                    <!--/*** If you wish to remove this credit link, please purchase the Pro Version . ***/-->
-                    Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">HTML Codex</a>
+                    Designed By <a class="border-bottom text-white" href="#">TradeWalla</a>
                 </div>
             </div>
         </div>

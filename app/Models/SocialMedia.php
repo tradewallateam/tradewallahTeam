@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class SocialMedia extends Model
 {
-    //
+    protected $fillable = [
+        'facebook',
+        'instagram',
+        'linked_in',
+        'twitter',
+    ];
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Header;
+use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -64,5 +65,30 @@ class CMSController extends Controller
     public function manageSocialMedia()
     {
         return view('admin.pages.cms.manage-social-media');
+    }
+
+    public function updateSocialMedia(Request $request)
+    {
+        try {
+
+            $request->validate([
+                'facebook' => 'required|url',
+                'instagram' => 'required|url',
+                'linked_in' => 'required|url',
+                'twitter' => 'required|url',
+            ]);
+            $socialMedia = SocialMedia::firstOrCreate(['id' => 1]);
+            $socialMedia->update([
+                'facebook' => $request->input('facebook'),
+                'instagram' => $request->input('instagram'),
+                'linked_in' => $request->input('linked_in'),
+                'twitter' => $request->input('twitter'),
+            ]);
+            return redirect()->route('admin.pages.cms.manage-social-media')
+                ->with('success', 'Social media links updated successfully.');
+        } catch (\Throwable $th) {
+            return redirect()->back()
+                ->with('error', 'Error updating social media links: ' . $th->getMessage());
+        }
     }
 }

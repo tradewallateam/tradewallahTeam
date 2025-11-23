@@ -29,7 +29,7 @@ Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.'
             Route::post('update-header', 'updateHeader')->name('update-header');
 
             Route::get('manage-social-media', 'manageSocialMedia')->name('manage-social-media');
-            Route::post('update-footer', 'updateFooter')->name('update-footer');
+            Route::post('update-social-media', 'updateSocialMedia')->name('update-social-media');
         });
     });
 });

@@ -98,11 +98,22 @@ class LoginController extends Controller
             if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
                 $request->session()->regenerate();
 
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Login successful!',
-                    'redirect' => route('pages.home'),
-                ]);
+                $user = Auth::user();
+
+                if ($user->hasRole('member')) {
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'Login successful!',
+                        'redirect' => route('pages.home'),
+                    ]);
+                } else {
+                    Auth::logout();
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Login successful!',
+                        'redirect' => route('pages.home'),
+                    ]);
+                }
             }
 
             return response()->json([

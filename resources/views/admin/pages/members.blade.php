@@ -32,14 +32,14 @@
                                 @foreach ($members as $index => $value)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
-                                        <td>{{ $value->name }}</td>
-                                        <td>{{ $value->email }}</td>
-                                        <td>{{ $value->phone_number }}</td>
-                                        <td>{{ $value->address }}</td>
+                                        <td>{{ $value->memberProfile->name ?? 'Not Available' }}</td>
+                                        <td>{{ $value->email ?? 'Not Available' }}</td>
+                                        <td>{{ $value->phone_number ?? 'Not Available' }}</td>
+                                        <td>{{ $value->address ?? 'Not Available' }}</td>
                                         <td><label
                                                 class="badge badge-{{ $value->status ? 'success' : 'warning' }}">{{ $value->status ? 'Active' : 'Inactive' }}</label>
                                         </td>
-                                        <td>{{ $value->created_at }}</td>
+                                        <td>{{ $value->created_at ?? 'Not Available' }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

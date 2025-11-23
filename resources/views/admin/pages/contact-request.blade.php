@@ -35,11 +35,11 @@
                                     @foreach ($contacts as $index => $value)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>{{ $value->name }}</td>
-                                            <td>{{ $value->email }}</td>
-                                            <td>{{ $value->phone_number }}</td>
-                                            <td>{{ $value->subject }}</td>
-                                            <td>{{ $value->message }}</td>
+                                            <td>{{ $value->name ?? 'Not Available' }}</td>
+                                            <td>{{ $value->email ?? 'Not Available' }}</td>
+                                            <td>{{ $value->phone_number ?? 'Not Available' }}</td>
+                                            <td>{{ $value->subject ?? 'Not Available' }}</td>
+                                            <td>{{ $value->message ?? 'Not Available' }}</td>
                                             <td><label
                                                     class="badge badge-{{ $value->is_read ? 'success' : 'warning' }}">{{ $value->is_read ? 'Read' : 'UnRead' }}</label>
                                             </td>

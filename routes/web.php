@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\MemberRegisterController;
 use App\Http\Controllers\MainLogicController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +17,7 @@ Route::middleware(['frontend.data'])->controller(MainLogicController::class)->gr
     Route::post('/submit-contact-form', 'submitContactForm')->name('contact.submit');
 });
 
-Route::controller(RegisterController::class)->group(function () {
+Route::controller(MemberRegisterController::class)->group(function () {
     Route::post('/register', 'register')->name('auth.register.submit');
 });
 

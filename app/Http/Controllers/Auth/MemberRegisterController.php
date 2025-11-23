@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Member;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
-class RegisterController extends Controller
+class MemberRegisterController extends Controller
 {
     public function register(Request $request)
     {
@@ -28,6 +29,16 @@ class RegisterController extends Controller
                 'email'    => $request->email,
                 'phone_number'    => $request->phone,
                 'password' => Hash::make($request->password),
+            ]);
+
+            Member::create([
+                'user_id'      => $user->id,
+                'name'         => $request->first_name . ' ' . $request->last_name,
+                'email'        => $request->email,
+                'phone_number' => $request->phone,
+                'address'      => 'Not Specified',
+                'country'      => 'Not Specified',
+                'status'       => true,
             ]);
 
             $role = Role::firstORCreate(['name' => 'member']);

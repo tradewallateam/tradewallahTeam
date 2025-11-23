@@ -25,41 +25,62 @@ class CMSController extends Controller
 
     public function updateHeader(Request $request)
     {
-        try {
-            $request->validate([
-                'location' => 'nullable|string|max:255',
-                'phone_number' => 'nullable|string|max:20',
-                'email' => 'nullable|email|max:255',
-                'header_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
+        $request->validate([
+            'phone_number'         => 'nullable|string|max:30',
+            'email'                => 'nullable|email|max:255',
+            'location'             => 'nullable|string|max:255',
+            'title'                => 'nullable|string|max:255',
+            'subtitle'             => 'nullable|string|max:255',
+            'subtitle_description' => 'nullable|string',
+            'video_link'           => 'nullable|url',
 
-            $header = Header::firstOrCreate(['id' => 1]);
+            'background_image_1'   => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
+            'background_image_2'   => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
+            'square_logo'          => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'horizontal_logo'      => 'nullable|image|mimes:jpeg,png,jpg,svg|max:5120',
+            'png_square_logo'      => 'nullable|mimes:png|max:2048',
+            'png_horizontal_logo'  => 'nullable|mimes:png|max:5120',
+            'favicon'              => 'nullable|mimes:ico,png|max:512',
+        ]);
 
-            $logo = $header->logo;
+        $header = Header::firstOrCreate(['id' => 1]);
 
-            if ($request->hasFile('header_logo')) {
+        $data = $request->only([
+            'phone_number',
+            'email',
+            'location',
+            'title',
+            'subtitle',
+            'subtitle_description',
+            'video_link'
+        ]);
 
-                if ($header->logo && Storage::disk('public')->exists($header->logo)) {
-                    Storage::disk('public')->delete($header->logo);
+        // List of all possible image fields in your model
+        $imageFields = [
+            'background_image_1',
+            'background_image_2',
+            'square_logo',
+            'horizontal_logo',
+            'png_square_logo',
+            'png_horizontal_logo',
+            'favicon'
+        ];
+
+        foreach ($imageFields as $field) {
+            if ($request->hasFile($field)) {
+                if ($header->$field && Storage::disk('public')->exists($header->$field)) {
+                    Storage::disk('public')->delete($header->$field);
                 }
 
-                $image = $request->file('header_logo');
-                $logo = $image->store('headers', 'public');
+                $path = $request->file($field)->store('headers', 'public');
+                $data[$field] = $path;
             }
-
-            $header->update([
-                'location' => $request->input('location'),
-                'phone_number' => $request->input('phone_number'),
-                'email' => $request->input('email'),
-                'logo' => $logo,
-            ]);
-
-            return redirect()->route('admin.pages.cms.manage-header')
-                ->with('success', 'Header updated successfully.');
-        } catch (\Throwable $th) {
-            return redirect()->back()
-                ->with('error', 'Error updating header: ' . $th->getMessage());
         }
+
+        $header->update($data);
+
+        return redirect()->route('admin.pages.cms.manage-header')
+            ->with('success', 'All header settings have been updated successfully!');
     }
 
     public function manageSocialMedia()

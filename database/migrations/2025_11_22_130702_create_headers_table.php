@@ -16,6 +16,17 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
+            $table->string('square_logo')->nullable();
+            $table->string('horizontal_logo')->nullable();
+            $table->string('png_horizontal_logo')->nullable();
+            $table->string('png_square_logo')->nullable();
+            $table->string('favicon')->nullable();
+            $table->string('title')->nullable();
+            $table->string('subtitle')->nullable();
+            $table->string('subtitle_description')->nullable();
+            $table->string('video_link')->nullable();
+            $table->string('background_image_1')->nullable();
+            $table->string('background_image_2')->nullable();
             $table->timestamps();
         });
     }

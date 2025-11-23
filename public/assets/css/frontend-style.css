@@ -713,3 +713,46 @@
 }
 
 /*** copyright end ***/
+
+/*** Custom Css ***/
+
+/* Fix modal appearing behind content */
+#loginModal,
+#registerModal {
+    z-index: 1060 !important;
+}
+
+#loginModal .modal-dialog {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    max-width: 420px !important;
+    width: 90% !important;
+}
+
+#registerModal .modal-dialog {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    width: 90% !important;
+}
+
+#loginModal .modal-backdrop,
+#registerModal .modal-backdrop {
+    z-index: 0 !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Fix body padding when modal opens */
+body.modal-open {
+    padding-right: 0 !important;
+    overflow: hidden;
+}
+
+.modal {
+    padding: 0px !important;
+}

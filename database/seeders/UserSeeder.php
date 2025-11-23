@@ -21,11 +21,12 @@ class UserSeeder extends Seeder
         }
 
         $admin = User::create([
-            'name' => 'Test User',
+            'first_name' => 'Test',
+            'last_name' => 'User',
             'email' => 'test@example.com',
             'phone_number' => '1234567890',
             'address' => '123 Test St, Test City',
-            'password' => 'password123',
+            'password' => 'password',
         ]);
 
         $role = Role::create(['name' => 'admin']);

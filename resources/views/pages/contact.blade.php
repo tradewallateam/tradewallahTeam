@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="phone" class="form-control border-0" name="phone_number"
+                                            <input type="number" class="form-control border-0" name="phone_number"
                                                 id="phone_number" value="{{ old('phone_number') }}"
                                                 placeholder="Phone Number">
                                             <label for="phone_number">Your Phone</label>

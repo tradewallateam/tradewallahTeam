@@ -76,4 +76,44 @@ class LoginController extends Controller
 
         return redirect()->route('admin.login')->with('success', 'You have been logged out successfully.');
     }
+    public function memberLogout(Request $request)
+    {
+        Auth::logout();
+
+        // ✅ Invalidate session
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('pages.home')->with('success', 'You have been logged out successfully.');
+    }
+
+    public function memberLogin(Request $request)
+    {
+        try {
+            $request->validate([
+                'email' => 'required|email',
+                'password' => 'required',
+            ]);
+
+            if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
+                $request->session()->regenerate();
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Login successful!',
+                    'redirect' => route('pages.home'),
+                ]);
+            }
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Invalid email or password.'
+            ], 401);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => 'An error occurred during login: ' . $th->getMessage()
+            ], 500);
+        }
+    }
 }

@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <title>TradeWalla - Stock Market | Trading </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -28,6 +30,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('public/assets/css/frontend-style.css') }}" rel="stylesheet">
@@ -82,7 +85,8 @@
     <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i
             class="fa fa-arrow-up"></i></a>
 
-
+    <!-- SweetAlert2 (Recommended) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>

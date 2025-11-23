@@ -14,6 +14,7 @@ class MainLogicController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|max:255',
                 'subject' => 'nullable|string|max:255',
+                'phone_number' => 'nullable|string|max:10',
                 'message' => 'required|string',
             ]);
 

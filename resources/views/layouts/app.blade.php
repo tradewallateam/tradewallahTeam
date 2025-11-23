@@ -21,16 +21,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link rel="stylesheet" href="{{ asset('assets/lib/animate/animate.min.css') }}" />
-    <link href="{{ asset('assets/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('public/assets/lib/animate/animate.min.css') }}" />
+    <link href="{{ asset('public/assets/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/assets/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="{{ asset('assets/css/frontend-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/assets/css/frontend-style.css') }}" rel="stylesheet">
 
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -88,16 +88,16 @@
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('assets/lib/wow/wow.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/counterup/counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/lightbox/js/lightbox.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('public/assets/lib/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('public/assets/lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('public/assets/lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('public/assets/lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ asset('public/assets/lib/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="{{ asset('public/assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
 
 
     <!-- Template Javascript -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('public/assets/js/main.js') }}"></script>
 
 </body>
 

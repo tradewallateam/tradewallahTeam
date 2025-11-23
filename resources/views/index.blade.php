@@ -57,18 +57,18 @@
                 </div>
                 <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
                     <div class="bg-primary rounded position-relative overflow-hidden">
-                        <img src="{{ asset('assets/images/about-2.png') }}" class="img-fluid rounded w-100" alt="">
+                        <img src="{{ asset('public/assets/images/about-2.png') }}" class="img-fluid rounded w-100" alt="">
 
                         <div class="" style="position: absolute; top: -15px; right: -15px;">
-                            <img src="{{ asset('assets/images/about-3.png') }}" class="img-fluid"
+                            <img src="{{ asset('public/assets/images/about-3.png') }}" class="img-fluid"
                                 style="width: 150px; height: 150px; opacity: 0.7;" alt="">
                         </div>
                         <div class="" style="position: absolute; top: -20px; left: 10px; transform: rotate(90deg);">
-                            <img src="{{ asset('assets/images/about-4.png') }}" class="img-fluid"
+                            <img src="{{ asset('public/assets/images/about-4.png') }}" class="img-fluid"
                                 style="width: 100px; height: 150px; opacity: 0.9;" alt="">
                         </div>
                         <div class="rounded-bottom">
-                            <img src="{{ asset('assets/images/about-5.jpg') }}" class="img-fluid rounded-bottom w-100"
+                            <img src="{{ asset('public/assets/images/about-5.jpg') }}" class="img-fluid rounded-bottom w-100"
                                 alt="">
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('assets/images/service-1.jpg') }}" class="img-fluid rounded-top w-100"
+                            <img src="{{ asset('public/assets/images/service-1.jpg') }}" class="img-fluid rounded-top w-100"
                                 alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
@@ -108,7 +108,7 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('assets/images/service-2.jpg') }}" class="img-fluid rounded-top w-100"
+                            <img src="{{ asset('public/assets/images/service-2.jpg') }}" class="img-fluid rounded-top w-100"
                                 alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
@@ -123,7 +123,7 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('assets/images/service-3.jpg') }}" class="img-fluid rounded-top w-100"
+                            <img src="{{ asset('public/assets/images/service-3.jpg') }}" class="img-fluid rounded-top w-100"
                                 alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
@@ -138,7 +138,7 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('assets/images/service-4.jpg') }}" class="img-fluid rounded-top w-100"
+                            <img src="{{ asset('public/assets/images/service-4.jpg') }}" class="img-fluid rounded-top w-100"
                                 alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
@@ -153,7 +153,7 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('assets/images/service-5.jpg') }}" class="img-fluid rounded-top w-100"
+                            <img src="{{ asset('public/assets/images/service-5.jpg') }}" class="img-fluid rounded-top w-100"
                                 alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
@@ -168,7 +168,7 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('assets/images/service-6.jpg') }}" class="img-fluid rounded-top w-100"
+                            <img src="{{ asset('public/assets/images/service-6.jpg') }}" class="img-fluid rounded-top w-100"
                                 alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
@@ -199,7 +199,7 @@
             <div class="owl-carousel blog-carousel wow fadeInUp" data-wow-delay="0.2s">
                 <div class="blog-item p-4">
                     <div class="blog-img mb-4">
-                        <img src="{{ asset('assets/images/service-1.jpg') }}" class="img-fluid w-100 rounded"
+                        <img src="{{ asset('public/assets/images/service-1.jpg') }}" class="img-fluid w-100 rounded"
                             alt="">
                         <div class="blog-title">
                             <a href="#" class="btn">Dividend Stocks</a>
@@ -210,7 +210,7 @@
                         suscipit error corporis accusamus labore....
                     </p>
                     <div class="d-flex align-items-center">
-                        <img src="{{ asset('assets/images/testimonial-1.jpg') }}" class="img-fluid rounded-circle"
+                        <img src="{{ asset('public/assets/images/testimonial-1.jpg') }}" class="img-fluid rounded-circle"
                             style="width: 60px; height: 60px;" alt="">
                         <div class="ms-3">
                             <h5>Admin</h5>
@@ -220,7 +220,7 @@
                 </div>
                 <div class="blog-item p-4">
                     <div class="blog-img mb-4">
-                        <img src="{{ asset('assets/images/service-2.jpg') }}" class="img-fluid w-100 rounded"
+                        <img src="{{ asset('public/assets/images/service-2.jpg') }}" class="img-fluid w-100 rounded"
                             alt="">
                         <div class="blog-title">
                             <a href="#" class="btn">Non-Dividend Stocks</a>
@@ -231,7 +231,7 @@
                         suscipit error corporis accusamus labore....
                     </p>
                     <div class="d-flex align-items-center">
-                        <img src="{{ asset('assets/images/testimonial-2.jpg') }}" class="img-fluid rounded-circle"
+                        <img src="{{ asset('public/assets/images/testimonial-2.jpg') }}" class="img-fluid rounded-circle"
                             style="width: 60px; height: 60px;" alt="">
                         <div class="ms-3">
                             <h5>Admin</h5>
@@ -241,7 +241,7 @@
                 </div>
                 <div class="blog-item p-4">
                     <div class="blog-img mb-4">
-                        <img src="{{ asset('assets/images/service-3.jpg') }}" class="img-fluid w-100 rounded"
+                        <img src="{{ asset('public/assets/images/service-3.jpg') }}" class="img-fluid w-100 rounded"
                             alt="">
                         <div class="blog-title">
                             <a href="#" class="btn">Dividend Stocks</a>
@@ -252,7 +252,7 @@
                         suscipit error corporis accusamus labore....
                     </p>
                     <div class="d-flex align-items-center">
-                        <img src="{{ asset('assets/images/testimonial-3.jpg') }}" class="img-fluid rounded-circle"
+                        <img src="{{ asset('public/assets/images/testimonial-3.jpg') }}" class="img-fluid rounded-circle"
                             style="width: 60px; height: 60px;" alt="">
                         <div class="ms-3">
                             <h5>Admin</h5>
@@ -262,7 +262,7 @@
                 </div>
                 <div class="blog-item p-4">
                     <div class="blog-img mb-4">
-                        <img src="{{ asset('assets/images/service-4.jpg') }}" class="img-fluid w-100 rounded"
+                        <img src="{{ asset('public/assets/images/service-4.jpg') }}" class="img-fluid w-100 rounded"
                             alt="">
                         <div class="blog-title">
                             <a href="#" class="btn">Non-Dividend Stocks</a>
@@ -273,7 +273,7 @@
                         suscipit error corporis accusamus labore....
                     </p>
                     <div class="d-flex align-items-center">
-                        <img src="{{ asset('assets/images/testimonial-1.jpg') }}" class="img-fluid rounded-circle"
+                        <img src="{{ asset('public/assets/images/testimonial-1.jpg') }}" class="img-fluid rounded-circle"
                             style="width: 60px; height: 60px;" alt="">
                         <div class="ms-3">
                             <h5>Admin</h5>
@@ -301,7 +301,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="team-item">
                         <div class="team-img">
-                            <img src="{{ asset('assets/images/team-1.jpg') }}" class="img-fluid" alt="">
+                            <img src="{{ asset('public/assets/images/team-1.jpg') }}" class="img-fluid" alt="">
                         </div>
                         <div class="team-title">
                             <h4 class="mb-0">David James</h4>
@@ -322,7 +322,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="team-item">
                         <div class="team-img">
-                            <img src="{{ asset('assets/images/team-2.jpg') }}" class="img-fluid" alt="">
+                            <img src="{{ asset('public/assets/images/team-2.jpg') }}" class="img-fluid" alt="">
                         </div>
                         <div class="team-title">
                             <h4 class="mb-0">David James</h4>
@@ -343,7 +343,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
                     <div class="team-item">
                         <div class="team-img">
-                            <img src="{{ asset('assets/images/team-3.jpg') }}" class="img-fluid" alt="">
+                            <img src="{{ asset('public/assets/images/team-3.jpg') }}" class="img-fluid" alt="">
                         </div>
                         <div class="team-title">
                             <h4 class="mb-0">David James</h4>
@@ -364,7 +364,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
                     <div class="team-item">
                         <div class="team-img">
-                            <img src="{{ asset('assets/images/team-4.jpg') }}" class="img-fluid" alt="">
+                            <img src="{{ asset('public/assets/images/team-4.jpg') }}" class="img-fluid" alt="">
                         </div>
                         <div class="team-title">
                             <h4 class="mb-0">David James</h4>

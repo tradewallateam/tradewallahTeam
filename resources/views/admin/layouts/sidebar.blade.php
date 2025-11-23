@@ -2,10 +2,10 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
         <a class="sidebar-brand brand-logo" href="{{ route('admin.dashboard') }}">
-            <img src="{{ asset('assets/images/logo.svg') }}" alt="logo" />
+            <img src="{{ asset('public/assets/images/logo.svg') }}" alt="logo" />
         </a>
         <a class="sidebar-brand brand-logo-mini" href="{{ route('admin.dashboard') }}">
-            <img src="{{ asset('assets/images/logo-mini.svg') }}" alt="logo" />
+            <img src="{{ asset('public/assets/images/logo-mini.svg') }}" alt="logo" />
         </a>
     </div>
 
@@ -16,7 +16,7 @@
             <div class="profile-desc">
                 <div class="profile-pic">
                     <div class="count-indicator">
-                        <img class="img-xs rounded-circle" src="{{ asset('assets/images/faces/face15.jpg') }}"
+                        <img class="img-xs rounded-circle" src="{{ asset('public/assets/images/faces/face15.jpg') }}"
                             alt="">
                         <span class="count bg-success"></span>
                     </div>

@@ -12,6 +12,34 @@
     <!-- Contact Start -->
     <div class="container-fluid contact py-5">
         <div class="container py-5">
+            <!-- ROW 1: Contact Info Blocks -->
+            <div class="row g-4 mb-5">
+
+                <!-- Address -->
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded shadow-sm h-100">
+                        <h5 class="text-primary mb-2"><i class="bi bi-geo-alt-fill me-2"></i>Address</h5>
+                        <p class="mb-0">123 Example Street, New York, NY, USA</p>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded shadow-sm h-100">
+                        <h5 class="text-primary mb-2"><i class="bi bi-envelope-fill me-2"></i>Email</h5>
+                        <p class="mb-0">info@example.com</p>
+                    </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded shadow-sm h-100">
+                        <h5 class="text-primary mb-2"><i class="bi bi-telephone-fill me-2"></i>Phone</h5>
+                        <p class="mb-0">+1 234 567 8900</p>
+                    </div>
+                </div>
+
+            </div>
             <div class="row g-5">
                 <div class="col-xl-6">
                     <div class="wow fadeInUp" data-wow-delay="0.2s">

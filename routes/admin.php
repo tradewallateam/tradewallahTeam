@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CMSController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Auth\LoginController;
@@ -21,6 +22,10 @@ Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.'
 
     Route::controller(MemberController::class)->group(function () {
         Route::get('members', 'index')->name('members');
+    });
+
+    Route::controller(ContactController::class)->group(function () {
+        Route::get('contacts', 'index')->name('contacts');
     });
 
     Route::controller(CMSController::class)->prefix('pages')->name('pages.')->group(function () {

@@ -24,6 +24,8 @@
     <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.png') }}" />
 
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+
 
     <!-- script query for sweet alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -75,12 +77,14 @@
     <script src="https://cdn.datatables.net/2.3.5/js/dataTables.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 
+
     <script src="{{ asset('public/assets/js/custom.js') }}"></script>
     <script src="{{ asset('public/assets/js/script.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#table').DataTable({
-                responsive: true
+                responsive: true,
+                scrollX: true
             });
         });
     </script>

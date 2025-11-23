@@ -83,8 +83,8 @@
         </li>
 
         {{-- Contact Requests --}}
-        <li class="nav-item menu-items {{ request()->routeIs('admin.contact') ? 'active' : '' }}">
-            <a class="nav-link" href="">
+        <li class="nav-item menu-items {{ request()->routeIs('admin.contacts') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.contacts') }}">
                 <span class="menu-icon"><i class="mdi mdi-message-text"></i></span>
                 <span class="menu-title">Contact Requests</span>
             </a>

@@ -4,11 +4,11 @@
                 <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                     <div class="d-flex flex-wrap">
                         <a href="#" class="text-muted small me-4"><i
-                                class="fas fa-map-marker-alt text-primary me-2"></i>Find A Location</a>
-                        <a href="tel:+01234567890" class="text-muted small me-4"><i
-                                class="fas fa-phone-alt text-primary me-2"></i>+01234567890</a>
-                        <a href="mailto:example@gmail.com" class="text-muted small me-0"><i
-                                class="fas fa-envelope text-primary me-2"></i>Example@gmail.com</a>
+                                class="fas fa-map-marker-alt text-primary me-2"></i>{{ $headerData->location ?? '' }}</a>
+                        <a href="tel:{{ $headerData->phone_number ?? '' }}" class="text-muted small me-4"><i
+                                class="fas fa-phone-alt text-primary me-2"></i>{{ $headerData->phone_number ?? '' }}</a>
+                        <a href="mailto:{{ $headerData->email ?? '' }}" class="text-muted small me-0"><i
+                                class="fas fa-envelope text-primary me-2"></i>{{ $headerData->email ?? '' }}</a>
                     </div>
                 </div>
                 <div class="col-lg-4 text-center text-lg-end">

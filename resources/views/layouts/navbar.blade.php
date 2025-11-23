@@ -19,7 +19,8 @@
              <a href="{{ route('pages.about') }}"
                  class="nav-item nav-link {{ request()->routeIs('pages.about') ? 'active' : '' }}">Pricing Page</a>
              <a href="service.html" class="nav-item nav-link">Services</a>
-             <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+             <a href="{{ route('pages.contact') }}"
+                 class="nav-item nav-link {{ request()->routeIs('pages.contact') ? 'active' : '' }}">Contact Us</a>
          </div>
          <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Request for
              Query</a>

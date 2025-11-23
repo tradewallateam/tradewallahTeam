@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'auth.check' => App\Http\Middleware\AuthMiddleware::class,
             'clear.cache' => App\Http\Middleware\ClearCacheMiddleware::class,
+            'frontend.data' => App\Http\Middleware\FrontendDataMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

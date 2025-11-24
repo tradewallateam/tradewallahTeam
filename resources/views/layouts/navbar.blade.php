@@ -12,13 +12,14 @@
                  class="nav-item nav-link {{ request()->routeIs('pages.home') ? 'active' : '' }}">Home</a>
              <a href="{{ route('pages.about') }}"
                  class="nav-item nav-link {{ request()->routeIs('pages.about') ? 'active' : '' }}">About</a>
+             <a href="{{ route('pages.services') }}"
+                 class="nav-item nav-link {{ request()->routeIs('pages.services') ? 'active' : '' }}">Services</a>
              <a href="{{ route('pages.about') }}"
                  class="nav-item nav-link {{ request()->routeIs('pages.about') ? 'active' : '' }}">FAQ Section</a>
              <a href="{{ route('pages.about') }}"
                  class="nav-item nav-link {{ request()->routeIs('pages.about') ? 'active' : '' }}">Risk Disclaimer</a>
              <a href="{{ route('pages.about') }}"
                  class="nav-item nav-link {{ request()->routeIs('pages.about') ? 'active' : '' }}">Pricing Page</a>
-             <a href="service.html" class="nav-item nav-link">Services</a>
              <a href="{{ route('pages.contact') }}"
                  class="nav-item nav-link {{ request()->routeIs('pages.contact') ? 'active' : '' }}">Contact Us</a>
          </div>

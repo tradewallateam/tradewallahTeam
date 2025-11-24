@@ -15,7 +15,7 @@
                 <h1 class="display-5 mb-4">We Services provided best offer</h1>
                 <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis
                     cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint
-                    dolorem autem obcaecati, ipsam mollitia hic.
+                    dolorem autem obcaecati, ipsam bheem hic.
                 </p>
             </div>
             <div class="row g-4">

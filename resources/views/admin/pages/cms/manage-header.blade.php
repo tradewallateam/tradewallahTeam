@@ -95,7 +95,7 @@
                                 <div class="col-md-6 mb-4">
                                     <label>Hero Background Image 1</label>
                                     <input type="file" name="background_image_1" class="form-control" accept="image/*">
-                                    @if ($header->background_image_1)
+                                    @if (!empty($header->background_image_1))
                                         <div class="mt-2">
                                             <img src="{{ asset('public/storage/' . $header->background_image_1) }}"
                                                 alt="BG 1" style="max-height: 100px; border-radius: 8px;">
@@ -110,7 +110,7 @@
                                 <div class="col-md-6 mb-4">
                                     <label>Hero Background Image 2</label>
                                     <input type="file" name="background_image_2" class="form-control" accept="image/*">
-                                    @if ($header->background_image_2)
+                                    @if (!empty($header->background_image_2))
                                         <div class="mt-2">
                                             <img src="{{ asset('public/storage/' . $header->background_image_2) }}"
                                                 alt="BG 2" style="max-height: 100px; border-radius: 8px;">
@@ -137,7 +137,7 @@
                                 <div class="col-md-6 mb-4">
                                     <label>Square Logo (Recommended: 512x512)</label>
                                     <input type="file" name="square_logo" class="form-control" accept="image/*">
-                                    @if ($header->square_logo)
+                                    @if (!empty($header->square_logo))
                                         <img src="{{ asset('public/storage/' . $header->square_logo) }}"
                                             alt="Square Logo" class="mt-2" style="max-height: 80px;">
                                     @endif
@@ -149,7 +149,7 @@
                                 <div class="col-md-6 mb-4">
                                     <label>Horizontal Logo (Navbar)</label>
                                     <input type="file" name="horizontal_logo" class="form-control" accept="image/*">
-                                    @if ($header->horizontal_logo)
+                                    @if (!empty($header->horizontal_logo))
                                         <img src="{{ asset('public/storage/' . $header->horizontal_logo) }}"
                                             alt="Horizontal Logo" class="mt-2" style="max-height: 80px;">
                                     @endif
@@ -162,7 +162,7 @@
                                     <label>PNG Square Logo (Transparent)</label>
                                     <input type="file" name="png_square_logo" class="form-control"
                                         accept="image/png">
-                                    @if ($header->png_square_logo)
+                                    @if (!empty($header->png_square_logo))
                                         <img src="{{ asset('public/storage/' . $header->png_square_logo) }}"
                                             alt="PNG Square" class="mt-2" style="max-height: 80px;">
                                     @endif
@@ -175,7 +175,7 @@
                                     <label>PNG Horizontal Logo (Transparent)</label>
                                     <input type="file" name="png_horizontal_logo" class="form-control"
                                         accept="image/png">
-                                    @if ($header->png_horizontal_logo)
+                                    @if (!empty($header->png_horizontal_logo))
                                         <img src="{{ asset('public/storage/' . $header->png_horizontal_logo) }}"
                                             alt="PNG Horizontal" class="mt-2" style="max-height: 80px;">
                                     @endif
@@ -187,7 +187,7 @@
                                 <div class="col-md-6 mb-4">
                                     <label>Favicon (.ico recommended)</label>
                                     <input type="file" name="favicon" class="form-control" accept=".ico,image/png">
-                                    @if ($header->favicon)
+                                    @if (!empty($header->favicon))
                                         <img src="{{ asset('public/storage/' . $header->favicon) }}" alt="Favicon"
                                             class="mt-2" style="max-height: 64px;">
                                     @endif

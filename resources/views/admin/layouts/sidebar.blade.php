@@ -165,7 +165,7 @@
 
         <li class="nav-item menu-items {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
             <a class="nav-link" href="">
-                <span class="menu-icon"><i class="mdi mdi-settings"></i></span>
+                <span class="menu-icon"><i class="mdi mdi-cogs"></i></span>
                 <span class="menu-title">General Settings</span>
             </a>
         </li>

@@ -38,6 +38,8 @@
 
         @include('admin.layouts.session-message')
 
+        @include('admin.layouts.partial')
+
         @include('admin.layouts.sidebar')
 
         <div class="container-fluid page-body-wrapper">
@@ -65,7 +67,7 @@
     <script src="{{ asset('public/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
     <script src="{{ asset('public/assets/vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('public/assets/js/jquery.cookie.js') }}" type="text/javascript"></script>
-    
+
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="{{ asset('public/assets/js/off-canvas.js') }}"></script>

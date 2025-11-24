@@ -73,7 +73,7 @@
                             </div>
                             <div id="cart-items-container">
                                 {{-- If you already have existing cart items (from DB), loop them here --}}
-                                @if (isset($about->aboutCarts) && $about->aboutCarts->count())x
+                                @if (isset($about->aboutCarts) && $about->aboutCarts->count())
                                     @foreach ($about->aboutCarts as $index => $cart)
                                         <div class="cart-item row align-items-end mb-4 border p-3 rounded">
                                             <div class="col-md-5 mb-3">
@@ -118,6 +118,71 @@
                 </div>
             </div>
         </div>
+
+        <!-- Service Pages -->
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <h4>
+                                Services
+                                <button type="button" class="btn btn-sm btn-success float-end" id="add-cart-item"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <i class="mdi mdi-plus"></i> Add Service
+                                </button>
+                            </h4>
+                        </div>
+                        <table id="table" class="table table-striped table-bordered table-white">
+                            <thead>
+                                <tr>
+                                    <th>S.N.</th>
+                                    <th>Banner</th>
+                                    <th>Title</th>
+                                    <th>Descriptions</th>
+                                    <th>Status</th>
+                                    <th>Created At</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (!empty($services))
+                                    @foreach ($services as $index => $service)
+                                        <tr>
+                                            <td>{{ $index + 1 }}.</td>
+                                            <td>
+                                                @if (!empty($service->banner_image))
+                                                    <img src="{{ asset('public/storage/' . $service->banner_image) }}"
+                                                        alt="{{ $service->title }}">
+                                                @endif
+                                            </td>
+                                            <td>{{ $service->title ?? 'Not Available' }}</td>
+                                            <td>{{ $service->description ?? 'Not Available' }}</td>
+                                            <td>
+                                                @if ($service->is_active)
+                                                    <span class="badge rounded-pill text-bg-primary">Active</span>
+                                                @else
+                                                    <span class="badge rounded-pill text-bg-secondary">Inactive</span>
+                                                @endif
+                                            </td>
+                                            <td>{{ $service->created_at->format('d/m/Y h:i:s A') }}</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary">View</button>
+                                                <button class="btn btn-sm btn-success">Edit</button>
+                                                <a href="{{ route('admin.pages.cms.delete-service', Crypt::encrypt($service->id)) }}"
+                                                    class="btn btn-sm btn-danger delete-btn">Delete</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 

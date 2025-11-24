@@ -38,6 +38,9 @@ Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.'
 
             Route::get('manage-page/about', 'managePage')->name('manage-page');
             Route::post('update-page/about', 'updateAboutPage')->name('update-page');
+
+            Route::post('add-service', 'addService')->name('add-service');
+            Route::get('delete-service/{id}', 'deleteService')->name('delete-service');
         });
     });
 });

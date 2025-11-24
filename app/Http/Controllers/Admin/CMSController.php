@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\AboutCart;
 use App\Models\Header;
+use App\Models\Service;
 use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 
 class CMSController extends Controller
@@ -119,7 +121,8 @@ class CMSController extends Controller
     public function managePage()
     {
         $about = About::with('aboutCarts')->first();
-        return view('admin.pages.cms.manage-page', compact('about'));
+        $services = Service::all();
+        return view('admin.pages.cms.manage-page', compact('about', 'services'));
     }
 
     public function updateAboutPage(Request $request)
@@ -201,6 +204,51 @@ class CMSController extends Controller
             return redirect()->back()
                 ->withInput()
                 ->with('error', 'Error: ' . $th->getMessage());
+        }
+    }
+
+    public function addService(Request $request)
+    {
+        try {
+            $request->validate([
+                'title'       => 'required|string|max:255',
+                'description' => 'required|string',
+                'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5048',
+                'is_active'   => 'required|boolean',
+            ]);
+
+            $data = $request->only(['title', 'description', 'is_active']);
+
+            if ($request->hasFile('banner_image')) {
+                $path = $request->file('banner_image')->store('services', 'public');
+                $data['banner_image'] = $path;
+            }
+
+            Service::create($data);
+
+            return redirect()->route('admin.pages.cms.manage-page')
+                ->with('success', 'Service added successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Error adding service: ' . $th->getMessage())->withInput();
+        }
+    }
+
+    public function deleteService($id)
+    {
+        try {
+            $id = Crypt::decrypt($id);
+            $service = Service::findOrFail($id);
+            if ($service->banner_image && Storage::disk('public')->exists($service->banner_image)) {
+                Storage::disk('public')->delete($service->banner_image);
+            }
+            $service->delete();
+            return redirect()->route('admin.pages.cms.manage-page')
+                ->with('success', 'Service deleted successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()
+                ->with('error', 'Error deleting service: ' . $th->getMessage());
         }
     }
 }

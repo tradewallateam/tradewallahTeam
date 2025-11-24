@@ -136,8 +136,8 @@
             </a>
         </li>
 
-        <li class="nav-item menu-items {{ request()->routeIs('admin.pages') ? 'active' : '' }}">
-            <a class="nav-link" href="">
+        <li class="nav-item menu-items {{ request()->routeIs('admin.pages.manage_page') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.pages.cms.manage-page') }}">
                 <span class="menu-icon"><i class="mdi mdi-file-document-multiple"></i></span>
                 <span class="menu-title">Manage Pages</span>
             </a>

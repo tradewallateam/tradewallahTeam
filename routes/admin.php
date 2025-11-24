@@ -35,6 +35,9 @@ Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.'
 
             Route::get('manage-social-media', 'manageSocialMedia')->name('manage-social-media');
             Route::post('update-social-media', 'updateSocialMedia')->name('update-social-media');
+
+            Route::get('manage-page/about', 'managePage')->name('manage-page');
+            Route::post('update-page/about', 'updateAboutPage')->name('update-page');
         });
     });
 });

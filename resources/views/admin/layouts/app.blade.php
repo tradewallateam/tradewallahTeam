@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{ asset('public/assets/vendors/owl-carousel-2/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/assets/vendors/owl-carousel-2/owl.theme.default.min.css') }}">
     <!-- End plugin css for this page -->
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}">
     <!-- End layout styles -->
@@ -63,6 +65,7 @@
     <script src="{{ asset('public/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
     <script src="{{ asset('public/assets/vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('public/assets/js/jquery.cookie.js') }}" type="text/javascript"></script>
+    
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="{{ asset('public/assets/js/off-canvas.js') }}"></script>
@@ -71,6 +74,7 @@
     <script src="{{ asset('public/assets/js/todolist.js') }}"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
     {{-- <script src="{{ asset('public/assets/js/proBanner.js') }}"></script> --}}
     <script src="{{ asset('public/assets/js/dashboard.js') }}"></script>
     <!-- End custom js for this page -->
@@ -85,6 +89,12 @@
             $('#table').DataTable({
                 responsive: true,
                 scrollX: true
+            });
+
+            $('#summernote').summernote({
+                placeholder: 'Writing .......',
+                tabsize: 2,
+                height: 300
             });
         });
     </script>

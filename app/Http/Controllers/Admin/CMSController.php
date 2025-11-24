@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
+use App\Models\AboutCart;
 use App\Models\Header;
 use App\Models\SocialMedia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 
 class CMSController extends Controller
@@ -110,6 +113,94 @@ class CMSController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()
                 ->with('error', 'Error updating social media links: ' . $th->getMessage());
+        }
+    }
+
+    public function managePage()
+    {
+        $about = About::with('aboutCarts')->first();
+        return view('admin.pages.cms.manage-page', compact('about'));
+    }
+
+    public function updateAboutPage(Request $request)
+    {
+        try {
+            $request->validate([
+                'title'       => 'required|string|max:255',
+                'description' => 'required|string',
+                'image_1'     => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5048',
+                'image_2'     => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5048',
+
+                'cart_items'                => 'nullable|array',
+                'cart_items.*.id'           => 'nullable|integer|exists:about_carts,id',
+                'cart_items.*.title'        => 'required_with:cart_items.*|string|max:255',
+                'cart_items.*.description'  => 'required_with:cart_items.*|string',
+            ]);
+
+            // Update or Create the main About page
+            $about = About::updateOrCreate(
+                ['id' => 1],
+                [
+                    'title'       => $request->title,
+                    'description' => $request->description,
+                ]
+            );
+
+            // Handle Image 1
+            if ($request->hasFile('image_1')) {
+                // Delete old image if exists
+                if ($about->image_1 && file_exists(public_path('storage/' . $about->image_1))) {
+                    unlink(public_path('storage/' . $about->image_1));
+                }
+                $path = $request->file('image_1')->store('about', 'public');
+                $about->image_1 = $path;
+                $about->save();
+            }
+
+            // Handle Image 2
+            if ($request->hasFile('image_2')) {
+                if ($about->image_2 && file_exists(public_path('storage/' . $about->image_2))) {
+                    unlink(public_path('storage/' . $about->image_2));
+                }
+                $path = $request->file('image_2')->store('about', 'public');
+                $about->image_2 = $path;
+                $about->save();
+            }
+
+            // === Smart Cart Items: Update existing, Create new, Delete removed ===
+            $incomingItems = $request->input('cart_items', []);
+            $incomingIds   = array_filter(array_column($incomingItems, 'id')); // Only existing IDs
+
+            // Delete removed items
+            if (!empty($incomingIds)) {
+                AboutCart::where('about_id', $about->id)
+                    ->whereNotIn('id', $incomingIds)
+                    ->delete();
+            } else {
+                // If no items sent, delete all
+                AboutCart::where('about_id', $about->id)->delete();
+            }
+
+            // Update or Create each cart item
+            foreach ($incomingItems as $item) {
+                AboutCart::updateOrCreate(
+                    [
+                        'id' => $item['id'] ?? null,
+                        'about_id' => $about->id,
+                    ],
+                    [
+                        'title'       => $item['title'],
+                        'description' => $item['description'],
+                    ]
+                );
+            }
+
+            return redirect()->route('admin.pages.cms.manage-page')
+                ->with('success', 'About page updated successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Error: ' . $th->getMessage());
         }
     }
 }

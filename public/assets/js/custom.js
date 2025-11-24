@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
+
 $(document).ready(function () {
     $(".manage-top-header").validate({
         rules: {

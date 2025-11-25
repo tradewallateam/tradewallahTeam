@@ -16,42 +16,42 @@
                 <div class="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
                     <div>
                         <h4 class="text-primary">About Us</h4>
-                        <h1 class="display-5 mb-4">Meet our company unless miss the opportunity</h1>
-                        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum velit temporibus
-                            repudiandae ipsa, eaque perspiciatis cumque incidunt tenetur sequi reiciendis.
+                        <h1 class="display-5 mb-4">{{ $about->title ?? 'Not Available' }}</h1>
+                        <p class="mb-4">{{ $about->description ?? 'Not Available' }}
                         </p>
                         <div class="row g-4">
-                            <div class="col-md-6 col-lg-6 col-xl-6">
-                                <div class="d-flex">
-                                    <div><i class="fas fa-lightbulb fa-3x text-primary"></i></div>
-                                    <div class="ms-4">
-                                        <h4>Business Consuluting</h4>
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                            @if (!empty($about->aboutCarts))
+                                @foreach ($about->aboutCarts as $cart)
+                                    <div class="col-md-6 col-lg-6 col-xl-6">
+                                        <div class="d-flex">
+                                            <div><i class="bi bi-bookmark-heart-fill fa-3x text-primary"></i></div>
+                                            <div class="ms-4">
+                                                <h4>{{ $cart->title ?? 'Not Available' }}</h4>
+                                                <p>{{ $cart->description ?? 'Not Available' }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="col-md-6 col-lg-6 col-xl-6">
+                                    <div class="d-flex">
+                                        <div><i class="fas fa-lightbulb fa-3x text-primary"></i></div>
+                                        <div class="ms-4">
+                                            <h4>Business Consuluting</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-xl-6">
-                                <div class="d-flex">
-                                    <div><i class="bi bi-bookmark-heart-fill fa-3x text-primary"></i></div>
-                                    <div class="ms-4">
-                                        <h4>Year Of Expertise</h4>
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                                <div class="col-md-6 col-lg-6 col-xl-6">
+                                    <div class="d-flex">
+                                        <div><i class="bi bi-bookmark-heart-fill fa-3x text-primary"></i></div>
+                                        <div class="ms-4">
+                                            <h4>Year Of Expertise</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <a href="#" class="btn btn-primary rounded-pill py-3 px-5 flex-shrink-0">Discover
-                                    Now</a>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex">
-                                    <i class="fas fa-phone-alt fa-2x text-primary me-4"></i>
-                                    <div>
-                                        <h4>Call Us</h4>
-                                        <p class="mb-0 fs-5" style="letter-spacing: 1px;">+01234567890</p>
-                                    </div>
-                                </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -91,90 +91,130 @@
                 </p>
             </div>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="{{ asset('public/assets/images/team-1.jpg') }}" class="img-fluid" alt="">
+
+                @if (!empty($teams))
+                    @foreach ($teams as $member)
+                        <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="team-item">
+                                <div class="team-img">
+                                    @if (!empty($member->image))
+                                        <img src="{{ asset('public/storage/' . $member->image) }}" class="img-fluid"
+                                            alt="{{ $member->name ?? 'Not Available' }}">
+                                    @else
+                                        <img src="{{ asset('assets/images/team-1.jpg') }}" class="img-fluid"
+                                            alt="Image">
+                                    @endif
+                                </div>
+                                <div class="team-title">
+                                    <h4 class="mb-0">{{ $member->name ?? 'Not Available' }}</h4>
+                                    <p class="mb-0">{{ $member->position ?? 'Not Available' }}</p>
+                                </div>
+                                <div class="team-icon">
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                        href="{{ $member->facebook_link ?? '#' }}" target="__blank"><i
+                                            class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                        href="{{ $member->twitter_link ?? '#' }}" target="__blank"><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3"
+                                        href="{{ $member->linkedin_link ?? '#' }}" target="__blank"><i
+                                            class="fab fa-linkedin-in"></i></a>
+                                    <a class="btn btn-primary btn-sm-square rounded-circle me-0"
+                                        href="{{ $member->instagram_link ?? '#' }}" target="__blank"><i
+                                            class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="team-title">
-                            <h4 class="mb-0">David James</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="team-icon">
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i
-                                    class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="{{ asset('public/assets/images/team-2.jpg') }}" class="img-fluid" alt="">
-                        </div>
-                        <div class="team-title">
-                            <h4 class="mb-0">David James</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="team-icon">
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i
-                                    class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="{{ asset('public/assets/images/team-3.jpg') }}" class="img-fluid" alt="">
-                        </div>
-                        <div class="team-title">
-                            <h4 class="mb-0">David James</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="team-icon">
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i
-                                    class="fab fa-instagram"></i></a>
+                    @endforeach
+                @else
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <img src="{{ asset('public/assets/images/team-1.jpg') }}" class="img-fluid" alt="">
+                            </div>
+                            <div class="team-title">
+                                <h4 class="mb-0">David James</h4>
+                                <p class="mb-0">Profession</p>
+                            </div>
+                            <div class="team-icon">
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
+                                        class="fab fa-twitter"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i
+                                        class="fab fa-instagram"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                    <div class="team-item">
-                        <div class="team-img">
-                            <img src="{{ asset('public/assets/images/team-4.jpg') }}" class="img-fluid" alt="">
-                        </div>
-                        <div class="team-title">
-                            <h4 class="mb-0">David James</h4>
-                            <p class="mb-0">Profession</p>
-                        </div>
-                        <div class="team-icon">
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-twitter"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
-                                    class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i
-                                    class="fab fa-instagram"></i></a>
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <img src="{{ asset('public/assets/images/team-2.jpg') }}" class="img-fluid"
+                                    alt="">
+                            </div>
+                            <div class="team-title">
+                                <h4 class="mb-0">David James</h4>
+                                <p class="mb-0">Profession</p>
+                            </div>
+                            <div class="team-icon">
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
+                                        class="fab fa-twitter"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i
+                                        class="fab fa-instagram"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <img src="{{ asset('public/assets/images/team-3.jpg') }}" class="img-fluid"
+                                    alt="">
+                            </div>
+                            <div class="team-title">
+                                <h4 class="mb-0">David James</h4>
+                                <p class="mb-0">Profession</p>
+                            </div>
+                            <div class="team-icon">
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
+                                        class="fab fa-twitter"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i
+                                        class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <img src="{{ asset('public/assets/images/team-4.jpg') }}" class="img-fluid"
+                                    alt="">
+                            </div>
+                            <div class="team-title">
+                                <h4 class="mb-0">David James</h4>
+                                <p class="mb-0">Profession</p>
+                            </div>
+                            <div class="team-icon">
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
+                                        class="fab fa-twitter"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-3" href=""><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-primary btn-sm-square rounded-circle me-0" href=""><i
+                                        class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

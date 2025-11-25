@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
+use App\Models\TeamMember;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function home()
     {
-        return view('index');
+        $teams = TeamMember::where('status', true)->get();
+        return view('index', compact('teams'));
     }
 
     public function about()
     {
-        return view('pages.about');
+        $teams = TeamMember::where('status', true)->get();
+        $about = About::with('aboutCarts')->first();
+        return view('pages.about', compact('teams', 'about'));
     }
 
     public function services()

@@ -29,18 +29,41 @@
                         <table id="table" class="table table-bordered">
                             <thead>
                                 <tr>
+                                    <th>S.N.</th>
+                                    <th>Photo</th>
                                     <th>Name</th>
                                     <th>Position</th>
-                                    <th>Photo</th>
+                                    <th>Status</th>
+                                    <th>Created At</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>Developer</td>
-                                    <td><img src="{{ asset('public/assets/images/team/john_doe.jpg') }}" alt="John Doe"
-                                            width="50"></td>
-                                </tr>
+                                @if (!empty($teams))
+                                    @foreach ($teams as $team)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>
+                                                <img src="{{ asset('public/storage/' . $team->image) }}" alt="Team Image"
+                                                    width="80" height="80">
+                                            </td>
+                                            <td>{{ $team->name ?? 'Not Available' }}</td>
+                                            <td>{{ $team->position }}</td>
+                                            <td>
+                                                <a href="{{ route('admin.pages.cms.team-member-status', Crypt::encrypt($team->id)) }}"
+                                                    style="text-decoration: none"
+                                                    class="badge bg-{{ $team->status ? 'success' : 'warning' }}">{{ $team->status ? 'Active' : 'Inactive' }}</a>
+                                            </td>
+                                            <td>{{ $team->created_at->format('d M, Y') }}</td>
+                                            <td>
+                                                <a href="{{ route('admin.pages.cms.delete-team-member', Crypt::encrypt($team->id)) }}"
+                                                    style="text-decoration: none" class="btn btn-sm btn-danger delete-btn">
+                                                    <i class="mdi mdi-delete"></i> Delete
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

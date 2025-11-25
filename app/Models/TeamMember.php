@@ -14,5 +14,6 @@ class TeamMember extends Model
         'twitter_link',
         'linkedin_link',
         'instagram_link',
+        'status',
     ];
 }

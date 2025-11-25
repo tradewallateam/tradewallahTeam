@@ -8,6 +8,7 @@ use App\Models\AboutCart;
 use App\Models\Header;
 use App\Models\Service;
 use App\Models\SocialMedia;
+use App\Models\TeamMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Crypt;
@@ -254,7 +255,8 @@ class CMSController extends Controller
 
     public function teamSettings()
     {
-        return view('admin.pages.cms.team-settings');
+        $teams = TeamMember::all();
+        return view('admin.pages.cms.team-settings', compact('teams'));
     }
 
     public function addTeamMember(Request $request)
@@ -294,6 +296,38 @@ class CMSController extends Controller
             return redirect()->back()
                 ->withInput()
                 ->with('error', 'Error adding team member: ' . $th->getMessage())->withInput();
+        }
+    }
+
+    public function deleteTeamMember($id)
+    {
+        try {
+            $id = Crypt::decrypt($id);
+            $member = TeamMember::findOrFail($id);
+            if ($member->image && Storage::disk('public')->exists($member->image)) {
+                Storage::disk('public')->delete($member->image);
+            }
+            $member->delete();
+            return redirect()->route('admin.pages.cms.team-settings')
+                ->with('success', 'Team member deleted successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()
+                ->with('error', 'Error deleting team member: ' . $th->getMessage());
+        }
+    }
+
+    public function teamMemberStatusChange($id)
+    {
+        try {
+            $id = Crypt::decrypt($id);
+            $member = TeamMember::findOrFail($id);
+            $member->status = !$member->status;
+            $member->save();
+            return redirect()->route('admin.pages.cms.team-settings')
+                ->with('success', 'Team member status updated successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()
+                ->with('error', 'Error updating team member status: ' . $th->getMessage());
         }
     }
 }

@@ -22,7 +22,8 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-1.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('public/assets/images/service-1.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4"> Strategy Consulting</a>
@@ -36,7 +37,8 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-2.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('public/assets/images/service-2.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Financial Advisory</a>
@@ -50,7 +52,8 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-3.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('public/assets/images/service-3.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Managements</a>
@@ -64,7 +67,8 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-4.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('public/assets/images/service-4.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Supply Optimization</a>
@@ -78,7 +82,8 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-5.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('public/assets/images/service-5.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Hr Consulting</a>
@@ -92,7 +97,8 @@
                 <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
                     <div class="service-item">
                         <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-6.jpg') }}" class="img-fluid rounded-top w-100" alt="Image">
+                            <img src="{{ asset('public/assets/images/service-6.jpg') }}" class="img-fluid rounded-top w-100"
+                                alt="Image">
                         </div>
                         <div class="rounded-bottom p-4">
                             <a href="#" class="h4 d-inline-block mb-4">Marketing Consulting</a>

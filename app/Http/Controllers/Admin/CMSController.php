@@ -251,4 +251,49 @@ class CMSController extends Controller
                 ->with('error', 'Error deleting service: ' . $th->getMessage());
         }
     }
+
+    public function teamSettings()
+    {
+        return view('admin.pages.cms.team-settings');
+    }
+
+    public function addTeamMember(Request $request)
+    {
+        try {
+            $request->validate([
+                'name'           => 'required|string|max:255',
+                'position'       => 'required|string|max:255',
+                'image'          => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5048',
+                'facebook_link'  => 'nullable|url',
+                'twitter_link'   => 'nullable|url',
+                'linkedin_link'  => 'nullable|url',
+                'instagram_link' => 'nullable|url',
+                'status'         => 'required|boolean',
+            ]);
+
+            $data = $request->only([
+                'name',
+                'position',
+                'facebook_link',
+                'twitter_link',
+                'linkedin_link',
+                'instagram_link',
+                'status',
+            ]);
+
+            if ($request->hasFile('image')) {
+                $path = $request->file('image')->store('team_members', 'public');
+                $data['image'] = $path;
+            }
+
+            \App\Models\TeamMember::create($data);
+
+            return redirect()->route('admin.pages.cms.team-settings')
+                ->with('success', 'Team member added successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Error adding team member: ' . $th->getMessage())->withInput();
+        }
+    }
 }

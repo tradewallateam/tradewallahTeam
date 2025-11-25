@@ -143,6 +143,13 @@
             </a>
         </li>
 
+        <li class="nav-item menu-items {{ request()->routeIs('admin.pages.cms.team-settings') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.pages.cms.team-settings') }}">
+                <span class="menu-icon"><i class="mdi mdi-file-document-multiple"></i></span>
+                <span class="menu-title">Team Settings</span>
+            </a>
+        </li>
+
         <li class="nav-item menu-items {{ request()->routeIs('admin.pages.cms.manage-header') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.pages.cms.manage-header') }}">
                 <span class="menu-icon"><i class="mdi mdi-page-layout-header"></i></span>

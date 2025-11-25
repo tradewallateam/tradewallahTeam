@@ -41,6 +41,9 @@ Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.'
 
             Route::post('add-service', 'addService')->name('add-service');
             Route::get('delete-service/{id}', 'deleteService')->name('delete-service');
+
+            Route::get('team-settings', 'teamSettings')->name('team-settings');
+            Route::post('add-team-member', 'addTeamMember')->name('add-team-member');
         });
     });
 });

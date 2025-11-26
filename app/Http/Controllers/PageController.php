@@ -30,4 +30,9 @@ class PageController extends Controller
     {
         return view('pages.contact');
     }
+
+    public function dashboard()
+    {
+        return view('pages.auth.dashboard');
+    }
 }

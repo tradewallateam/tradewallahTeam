@@ -55,4 +55,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Member::class, 'user_id');
     }
+
+    public function userLinks()
+    {
+        return $this->hasMany(UserLink::class);
+    }
+
 }

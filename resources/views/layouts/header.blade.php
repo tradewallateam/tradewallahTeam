@@ -17,24 +17,15 @@
 
         <div class="col-lg-4 text-center text-lg-end">
             <div class="d-inline-flex align-items-center" style="height: 45px;">
-
-                @if (!auth()->check())
-                    <a href="#" class="me-3" data-bs-toggle="modal" data-bs-target="#registerModal">
-                        <small class="text-dark"><i class="fa fa-user text-primary me-2"></i>Register</small>
-                    </a>
-
-                    <!-- Login Button Triggers Modal -->
-                    <a href="#" class="me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
-                        <small class="text-dark"><i class="fa fa-sign-in-alt text-primary me-2"></i>Login</small>
-                    </a>
-                @else
+                @if (auth()->check() && auth()->user()->hasRole('member'))
                     <!-- Dashboard Dropdown (Optional) -->
                     <div class="dropdown">
                         <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown">
                             <small><i class="fa fa-home text-primary me-2"></i> Dashboard</small>
                         </a>
                         <div class="dropdown-menu rounded">
-                            <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i> Profile</a>
+                            <a href="{{ route('pages.dashboard') }}         " class="dropdown-item"><i
+                                    class="fas fa-user-alt me-2"></i>Link</a>
                             <a href="#" class="dropdown-item"><i class="fas fa-comment-alt me-2"></i> Inbox</a>
                             <a href="#" class="dropdown-item"><i class="fas fa-bell me-2"></i> Notifications</a>
                             <a href="#" class="dropdown-item"><i class="fas fa-cog me-2"></i> Settings</a>
@@ -43,6 +34,15 @@
                                 Logout</a>
                         </div>
                     </div>
+                @else
+                    <a href="#" class="me-3" data-bs-toggle="modal" data-bs-target="#registerModal">
+                        <small class="text-dark"><i class="fa fa-user text-primary me-2"></i>Register</small>
+                    </a>
+
+                    <!-- Login Button Triggers Modal -->
+                    <a href="#" class="me-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <small class="text-dark"><i class="fa fa-sign-in-alt text-primary me-2"></i>Login</small>
+                    </a>
                 @endif
             </div>
         </div>

@@ -11,6 +11,10 @@ Route::middleware(['frontend.data'])->controller(PageController::class)->group(f
     Route::get('/about', 'about')->name('pages.about');
     Route::get('/services', 'services')->name('pages.services');
     Route::get('/contact', 'contact')->name('pages.contact');
+
+    Route::middleware(['member.auth'])->group(function () {
+        Route::get('/dashboard', 'dashboard')->name('pages.dashboard');
+    });
 });
 
 Route::middleware(['frontend.data'])->controller(MainLogicController::class)->group(function () {

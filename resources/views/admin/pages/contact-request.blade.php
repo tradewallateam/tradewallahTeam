@@ -39,7 +39,20 @@
                                             <td>{{ $value->email ?? 'Not Available' }}</td>
                                             <td>{{ $value->phone_number ?? 'Not Available' }}</td>
                                             <td>{{ $value->subject ?? 'Not Available' }}</td>
-                                            <td>{{ $value->message ?? 'Not Available' }}</td>
+                                            <td>
+                                                @php
+                                                    $fullMessage = $value->message ?? 'Not Available';
+                                                    $shortMessage =
+                                                        strlen($fullMessage) > 23
+                                                            ? substr($fullMessage, 0, 23) . '...'
+                                                            : $fullMessage;
+                                                @endphp
+
+                                                <span class="text-primary" style="cursor: pointer;" data-bs-toggle="modal"
+                                                    data-bs-target="#messageModal" data-message="{{ $fullMessage }}">
+                                                    {{ $shortMessage }}
+                                                </span>
+                                            </td>
                                             <td><label
                                                     class="badge badge-{{ $value->is_read ? 'success' : 'warning' }}">{{ $value->is_read ? 'Read' : 'UnRead' }}</label>
                                             </td>
@@ -57,4 +70,27 @@
             </div>
         </div>
     </div>
+    <!-- Message Modal -->
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="messageModalLabel">Full Message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalMessageContent">
+                    <!-- JS will insert text here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const messageModal = document.getElementById('messageModal');
+        messageModal.addEventListener('show.bs.modal', function(event) {
+            const trigger = event.relatedTarget;
+            const message = trigger.getAttribute('data-message');
+            document.getElementById('modalMessageContent').textContent = message;
+        });
+    </script>
+
 @endsection

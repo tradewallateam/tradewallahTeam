@@ -22,6 +22,7 @@ Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.'
 
     Route::controller(MemberController::class)->group(function () {
         Route::get('members', 'index')->name('members');
+        Route::get('member-status-change/{member_id}', 'memberStatusChange')->name('members.change-status');
     });
 
     Route::controller(ContactController::class)->group(function () {

@@ -29,19 +29,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($members as $index => $value)
-                                    <tr>
-                                        <td>{{ $index + 1 }}</td>
-                                        <td>{{ $value->memberProfile->name ?? 'Not Available' }}</td>
-                                        <td>{{ $value->email ?? 'Not Available' }}</td>
-                                        <td>{{ $value->phone_number ?? 'Not Available' }}</td>
-                                        <td>{{ $value->address ?? 'Not Available' }}</td>
-                                        <td><label
-                                                class="badge badge-{{ $value->status ? 'success' : 'warning' }}">{{ $value->status ? 'Active' : 'Inactive' }}</label>
-                                        </td>
-                                        <td>{{ $value->created_at ?? 'Not Available' }}</td>
-                                    </tr>
-                                @endforeach
+                                @if (!empty($members))
+                                    @foreach ($members as $index => $value)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $value->memberProfile->name ?? 'Not Available' }}</td>
+                                            <td>{{ $value->email ?? 'Not Available' }}</td>
+                                            <td>{{ $value->phone_number ?? 'Not Available' }}</td>
+                                            <td>{{ $value->address ?? 'Not Available' }}</td>
+                                            <td><a href="{{ route('admin.members.change-status', Crypt::encrypt($value->id)) }}"
+                                                    class="badge badge-{{ $value->memberProfile->status ? 'success' : 'warning' }}">{{ $value->memberProfile->status ? 'Active' : 'Inactive' }}</a>
+                                            </td>
+                                            <td>{{ $value->created_at ?? 'Not Available' }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

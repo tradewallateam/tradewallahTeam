@@ -14,19 +14,15 @@ class MemberController extends Controller
 
     public function index()
     {
-        // Check if role 'member' exists for guard web
         $roleExists = Role::where('name', 'member')
             ->where('guard_name', 'web')
             ->exists();
 
         if ($roleExists) {
-            // If role exists → get users with member role
             $members = User::role('member')->with('memberProfile')->get();
         } else {
-            // If role missing → return empty collection
             $members = collect();
         }
-
         return view('admin.pages.members', compact('members'));
     }
 

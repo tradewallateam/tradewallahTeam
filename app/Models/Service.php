@@ -12,4 +12,9 @@ class Service extends Model
         'banner_image',
         'is_active',
     ];
+
+    public function serviceDetails()
+    {
+        return $this->hasOne(ServiceDetails::class);
+    }
 }

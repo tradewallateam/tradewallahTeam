@@ -7,6 +7,7 @@ use App\Models\About;
 use App\Models\AboutCart;
 use App\Models\Header;
 use App\Models\Service;
+use App\Models\ServiceDetails;
 use App\Models\SocialMedia;
 use App\Models\TeamMember;
 use Exception;
@@ -336,7 +337,7 @@ class CMSController extends Controller
     {
         try {
             $id = Crypt::decrypt($id);
-            $service = Service::findOrFail($id);
+            $service = Service::with('serviceDetails')->findOrFail($id);
             return view('admin.pages.cms.view-service', compact('service'));
         } catch (Exception $e) {
             return redirect()->back()->with('failed', $e->getMessage());
@@ -346,13 +347,38 @@ class CMSController extends Controller
     public function serviceChangeStatus($serviceId)
     {
         try {
-
-            $serviceId = Crypt::encrypt($serviceId);
+            $serviceId = Crypt::decrypt($serviceId);
             $service = Service::findOrFail($serviceId);
             $service->is_active = ! $service->is_active;
             $service->save();
             return redirect()->back()->with('success', 'Status change successfully!');
         } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage());
+        }
+    }
+
+    public function updateServiceDetails(Request $request, $id)
+    {
+        try {
+
+            $serviceId = Crypt::decrypt($id);
+            $service = Service::findOrFail($serviceId);
+            if (!$service) {
+                return redirect()->back()->with('failed', "Service Id is not valid");
+            }
+            $details = $service->serviceDetails ?? new ServiceDetails();
+            $details->service_id = $service->id;
+            if ($request->hasFile('banner')) {
+                if ($details->banner && Storage::disk('public')->exists($details->banner)) {
+                    Storage::disk('public')->delete($details->banner);
+                }
+                $details->banner = $request->file('banner')->store('service/banner', 'public');
+            }
+            $details->description = $request->description;
+            $details->save();
+            return redirect()->back()->with('success', 'Details updated successfully!!');
+        } catch (\Throwable $th) {
+
             return redirect()->back()->with('failed', $th->getMessage());
         }
     }

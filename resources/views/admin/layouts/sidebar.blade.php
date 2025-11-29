@@ -2,10 +2,11 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
         <a class="sidebar-brand brand-logo" href="{{ route('admin.dashboard') }}">
-            <img src="{{ asset('public/assets/images/logo.svg') }}" alt="logo" />
+            <img src="{{ asset('public/assets/images/logo.jpg') }}" alt="logo" />
+            <span>TradeWalla</span>
         </a>
         <a class="sidebar-brand brand-logo-mini" href="{{ route('admin.dashboard') }}">
-            <img src="{{ asset('public/assets/images/logo-mini.svg') }}" alt="logo" />
+            <img src="{{ asset('public/assets/images/logo.jpg') }}" alt="logo" />
         </a>
     </div>
 
@@ -136,7 +137,8 @@
             </a>
         </li>
 
-        <li class="nav-item menu-items {{ request()->routeIs('admin.pages.manage_page') ? 'active' : '' }}">
+        <li
+            class="nav-item menu-items {{ request()->routeIs('admin.pages.manage-page') || request()->routeIs('admin.pages.cms.view-service') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.pages.cms.manage-page') }}">
                 <span class="menu-icon"><i class="mdi mdi-file-document-multiple"></i></span>
                 <span class="menu-title">Manage Pages</span>

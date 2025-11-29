@@ -27559,7 +27559,9 @@ dl li {
 .navbar .navbar-brand-wrapper .navbar-brand.brand-logo-mini img {
   width: calc(70px - 50px);
   max-width: 100%;
-  height: 28px;
+  border-radius: 50%;
+  height: 55px;
+  width: 55px;
   margin: auto;
 }
 
@@ -27938,7 +27940,7 @@ dl li {
 
 @media (max-width: 480px) {
   .navbar .navbar-brand-wrapper {
-    width: 55px;
+    width: 75px;
   }
 
   .navbar .navbar-brand-wrapper .brand-logo-mini {
@@ -27995,12 +27997,25 @@ dl li {
   color: #252b3e;
 }
 
+.sidebar .sidebar-brand-wrapper .sidebar-brand {
+  text-decoration: none;
+}
+
 .sidebar .sidebar-brand-wrapper .sidebar-brand img {
-  width: calc(244px - 120px);
+
   max-width: 100%;
-  height: 28px;
+  height: 58px;
+  border-radius: 50%;
   margin: auto;
   vertical-align: middle;
+}
+
+.sidebar .sidebar-brand-wrapper .sidebar-brand span {
+  vertical-align: middle;
+  font-weight: 600;
+  color: aqua;
+  font-family: cursive;
+  font-variant: petite-caps;
 }
 
 .sidebar .sidebar-brand-wrapper .sidebar-brand.brand-logo-mini {
@@ -28008,9 +28023,9 @@ dl li {
 }
 
 .sidebar .sidebar-brand-wrapper .sidebar-brand.brand-logo-mini img {
-  width: calc(70px - 50px);
   max-width: 100%;
-  height: 28px;
+  width: 45px;
+  height: 45px;
   margin: auto;
 }
 
@@ -29207,4 +29222,8 @@ input[type="file"]::file-selector-button:hover {
 
 td a {
   text-decoration: none;
+}
+
+.fr-dropdown-content {
+  background-color: black;
 }

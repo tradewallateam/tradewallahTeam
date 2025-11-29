@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.png') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet"
+        type="text/css" />
 
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.5/css/dataTables.dataTables.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
@@ -83,23 +85,21 @@
     <script src="https://cdn.datatables.net/2.3.5/js/dataTables.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js">
+    </script>
     <script src="{{ asset('public/assets/js/custom.js') }}"></script>
     <script src="{{ asset('public/assets/js/script.js') }}"></script>
+    <script src="{{ asset('public/assets/js/editor.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('#table').DataTable({
                 responsive: true,
                 scrollX: true
             });
-
-            $('#summernote').summernote({
-                placeholder: 'Writing .......',
-                tabsize: 2,
-                height: 300
-            });
         });
     </script>
+
+
 </body>
 
 </html>

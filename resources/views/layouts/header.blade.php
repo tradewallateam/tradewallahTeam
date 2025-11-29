@@ -18,7 +18,6 @@
         <div class="col-lg-4 text-center text-lg-end">
             <div class="d-inline-flex align-items-center" style="height: 45px;">
                 @if (auth()->check() && auth()->user()->hasRole('member'))
-                    <!-- Dashboard Dropdown (Optional) -->
                     <div class="dropdown">
                         <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown">
                             <small><i class="fa fa-home text-primary me-2"></i> Dashboard</small>

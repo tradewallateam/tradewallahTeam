@@ -37,13 +37,14 @@ Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.'
             Route::get('manage-social-media', 'manageSocialMedia')->name('manage-social-media');
             Route::post('update-social-media', 'updateSocialMedia')->name('update-social-media');
 
-            Route::get('manage-page/about', 'managePage')->name('manage-page');
-            Route::post('update-page/about', 'updateAboutPage')->name('update-page');
+            Route::get('manage-page', 'managePage')->name('manage-page');
+            Route::post('update-page', 'updateAboutPage')->name('update-page');
 
             Route::post('add-service', 'addService')->name('add-service');
             Route::get('delete-service/{id}', 'deleteService')->name('delete-service');
             Route::get('view-service/{id}', 'viewService')->name('view-service');
-            Route::get('service-status-change/{$id}', 'serviceChangeStatus')->name('service-status-change');
+            Route::get('service-status-change/{id}', 'serviceChangeStatus')->name('service-status-change');
+            Route::post('update-servie-details/{id}', 'updateServiceDetails')->name('update-service-details');
 
             Route::get('team-settings', 'teamSettings')->name('team-settings');
             Route::post('add-team-member', 'addTeamMember')->name('add-team-member');

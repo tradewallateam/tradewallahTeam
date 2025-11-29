@@ -346,12 +346,14 @@ class CMSController extends Controller
     public function serviceChangeStatus($serviceId)
     {
         try {
-            
-            $service
 
-
+            $serviceId = Crypt::encrypt($serviceId);
+            $service = Service::findOrFail($serviceId);
+            $service->is_active = ! $service->is_active;
+            $service->save();
+            return redirect()->back()->with('success', 'Status change successfully!');
         } catch (\Throwable $th) {
-            //throw $th;
+            return redirect()->back()->with('failed', $th->getMessage());
         }
     }
 }

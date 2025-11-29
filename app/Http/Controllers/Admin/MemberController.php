@@ -4,18 +4,32 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Member;
+use Spatie\Permission\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
 class MemberController extends Controller
 {
+
     public function index()
     {
-        $members = User::role('member')->with('memberProfile')->get();
-        // dd($members);
+        // Check if role 'member' exists for guard web
+        $roleExists = Role::where('name', 'member')
+            ->where('guard_name', 'web')
+            ->exists();
+
+        if ($roleExists) {
+            // If role exists → get users with member role
+            $members = User::role('member')->with('memberProfile')->get();
+        } else {
+            // If role missing → return empty collection
+            $members = collect();
+        }
+
         return view('admin.pages.members', compact('members'));
     }
+
 
     public function memberStatusChange(Request $request, $member_id)
     {

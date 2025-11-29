@@ -29204,3 +29204,7 @@ input[type="file"]::file-selector-button:hover {
   object-fit: cover;
   border-radius: 5px;
 }
+
+td a {
+  text-decoration: none;
+}

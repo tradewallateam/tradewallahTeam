@@ -10,6 +10,7 @@ Route::middleware(['frontend.data'])->controller(PageController::class)->group(f
     Route::get('/', 'home')->name('pages.home');
     Route::get('/about', 'about')->name('pages.about');
     Route::get('/services', 'services')->name('pages.services');
+    Route::get('/services/{id}', 'serviceDetails')->name('pages.service.details');
     Route::get('/contact', 'contact')->name('pages.contact');
 
     Route::middleware(['member.auth'])->group(function () {

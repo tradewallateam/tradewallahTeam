@@ -159,15 +159,13 @@
                                             <td>{{ $service->title ?? 'Not Available' }}</td>
                                             <td>{{ $service->description ?? 'Not Available' }}</td>
                                             <td>
-                                                @if ($service->is_active)
-                                                    <span class="badge rounded-pill text-bg-primary">Active</span>
-                                                @else
-                                                    <span class="badge rounded-pill text-bg-secondary">Inactive</span>
-                                                @endif
+                                                <a href="{{ route('admin.pages.cms.service-status-change', Crypt::encrypt($service->id)) }}"
+                                                    class="badge rounded-pill text-bg-{{ $service->is_active ? 'success' : 'warning' }}">{{ $service->is_active ? 'Active' : 'Inactive' }}</a>
                                             </td>
                                             <td>{{ $service->created_at->format('d/m/Y h:i:s A') }}</td>
                                             <td>
-                                                <button class="btn btn-sm btn-primary">View</button>
+                                                <a href="{{ route('admin.pages.cms.view-service', Crypt::encrypt($service->id)) }}"
+                                                    class="btn btn-sm btn-primary">View</a>
                                                 <button class="btn btn-sm btn-success">Edit</button>
                                                 <a href="{{ route('admin.pages.cms.delete-service', Crypt::encrypt($service->id)) }}"
                                                     class="btn btn-sm btn-danger delete-btn">Delete</a>

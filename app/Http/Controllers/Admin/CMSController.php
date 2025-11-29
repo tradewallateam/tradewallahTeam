@@ -9,6 +9,7 @@ use App\Models\Header;
 use App\Models\Service;
 use App\Models\SocialMedia;
 use App\Models\TeamMember;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Crypt;
@@ -328,6 +329,29 @@ class CMSController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()
                 ->with('error', 'Error updating team member status: ' . $th->getMessage());
+        }
+    }
+
+    public function viewService($id)
+    {
+        try {
+            $id = Crypt::decrypt($id);
+            $service = Service::findOrFail($id);
+            return view('admin.pages.cms.view-service', compact('service'));
+        } catch (Exception $e) {
+            return redirect()->back()->with('failed', $e->getMessage());
+        }
+    }
+
+    public function serviceChangeStatus($serviceId)
+    {
+        try {
+            
+            $service
+
+
+        } catch (\Throwable $th) {
+            //throw $th;
         }
     }
 }

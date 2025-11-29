@@ -30,7 +30,8 @@
                             <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
                                 Excepturi facilis neque nesciunt similique officiis veritatis,
                             </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                            <a class="btn btn-primary rounded-pill py-2 px-4"
+                                href="{{ route('pages.service.details', '21') }}">Learn More</a>
                         </div>
                     </div>
                 </div>

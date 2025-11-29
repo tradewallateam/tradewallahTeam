@@ -8,12 +8,20 @@
                     <div class="col-lg-0 col-xl-6">
                         <div class="row">
                             <div class="col-xl-6">
-                                <p>wpiciatis veritatis reiciendis?</p>
+                                <div class="cart">
+                                    <div class="cart-header">
+                                        <div class="cart-title">Test CartTitle</div>
+                                    </div>
+                                    <div class="cart-body">
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-xl-6">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex perferendis libero
-                                    pariatur ad quod. Ipsam modi a consequatur perferendis dolore nostrum laborum
-                                    consectetur est sequi laboriosam? Aspernatur perspiciatis veritatis reiciendis?</p>
+                                <div class="cart">
+                                    <div class="cart-body">
+                                        <div class="cart-title">Test CartTitle</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

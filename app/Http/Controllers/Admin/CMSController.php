@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\AboutCart;
+use App\Models\GeneralSiteSetting;
 use App\Models\Header;
 use App\Models\Service;
 use App\Models\ServiceDetails;
@@ -378,8 +379,86 @@ class CMSController extends Controller
             $details->save();
             return redirect()->back()->with('success', 'Details updated successfully!!');
         } catch (\Throwable $th) {
-
             return redirect()->back()->with('failed', $th->getMessage());
+        }
+    }
+
+    public function generalSiteSetting()
+    {
+        $generalSetting = GeneralSiteSetting::first();
+        return view('admin.pages.cms.general-site-setting', compact('generalSetting'));
+    }
+
+    public function generalAboutSetting(Request $request)
+    {
+        try {
+            $setting = GeneralSiteSetting::first() ?? new GeneralSiteSetting();
+            $setting->about_title = $request->about_title;
+            $setting->about_description = $request->about_description;
+            $setting->save();
+            return redirect()->back()->with('success', 'Setting update successfully!!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage())->withInput();
+        }
+    }
+    public function generalServiceSetting(Request $request)
+    {
+        try {
+            $setting = GeneralSiteSetting::first() ?? new GeneralSiteSetting();
+            $setting->service_title = $request->service_title;
+            $setting->service_description = $request->service_description;
+            $setting->save();
+            return redirect()->back()->with('success', 'Setting update successfully!!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage())->withInput();
+        }
+    }
+    public function generalTeamSetting(Request $request)
+    {
+        try {
+            $setting = GeneralSiteSetting::first() ?? new GeneralSiteSetting();
+            $setting->team_title = $request->team_title;
+            $setting->team_description = $request->team_description;
+            $setting->save();
+            return redirect()->back()->with('success', 'Setting update successfully!!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage())->withInput();
+        }
+    }
+    public function generalPricingSetting(Request $request)
+    {
+        try {
+            $setting = GeneralSiteSetting::first() ?? new GeneralSiteSetting();
+            $setting->pricing_title = $request->pricing_title;
+            $setting->pricing_description = $request->pricing_description;
+            $setting->save();
+            return redirect()->back()->with('success', 'Setting update successfully!!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage())->withInput();
+        }
+    }
+    public function generalRiskDisclaimerSetting(Request $request)
+    {
+        try {
+            $setting = GeneralSiteSetting::first() ?? new GeneralSiteSetting();
+            $setting->risk_disclaimer_title = $request->risk_disclaimer_title;
+            $setting->risk_disclaimer_description = $request->risk_disclaimer_description;
+            $setting->save();
+            return redirect()->back()->with('success', 'Setting update successfully!!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage())->withInput();
+        }
+    }
+    public function generalContactSetting(Request $request)
+    {
+        try {
+            $setting = GeneralSiteSetting::first() ?? new GeneralSiteSetting();
+            $setting->contact_title = $request->contact_title;
+            $setting->contact_description = $request->contact_description;
+            $setting->save();
+            return redirect()->back()->with('success', 'Setting update successfully!!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage())->withInput();
         }
     }
 }

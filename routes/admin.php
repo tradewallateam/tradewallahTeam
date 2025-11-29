@@ -16,7 +16,8 @@ Route::controller(LoginController::class)->prefix('auth/admin')->name('auth.admi
 Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.')->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         Route::get('dashboard', 'index')->name('dashboard');
-
+        Route::get('profile', 'profileSettings')->name('profile');
+        Route::put('profile-update', 'profileUpdate')->name('profile.update');
         Route::get('logout/{id}', 'logout')->name('logout');
     });
 
@@ -50,6 +51,14 @@ Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.'
             Route::post('add-team-member', 'addTeamMember')->name('add-team-member');
             Route::get('delete-team-member/{id}', 'deleteTeamMember')->name('delete-team-member');
             Route::get('team-member-status-change/{id}', 'teamMemberStatusChange')->name('team-member-status');
+
+            Route::get('general-site-setting', 'generalSiteSetting')->name('general-site-setting');
+            Route::post('general-about-setting', 'generalAboutSetting')->name('general-about-setting');
+            Route::post('genetal-service-setting', 'generalServiceSetting')->name('general-service-setting');
+            Route::post('general-team-setting', 'generalTeamSetting')->name('general-team-setting');
+            Route::post('general-pricing-setting', 'generalPricingSetting')->name('general-pricing-setting');
+            Route::post('general-risk-disclaimer-setting', 'generalRiskDisclaimerSetting')->name('general-risk-disclaimer-setting');
+            Route::post('general-contact-setting', 'generalContactSetting')->name('general-contact-setting');
         });
     });
 });

@@ -16,12 +16,12 @@
             <div class="profile-desc">
                 <div class="profile-pic">
                     <div class="count-indicator">
-                        <img class="img-xs rounded-circle" src="{{ asset('public/assets/images/faces/face15.jpg') }}"
+                        <img class="img-xs rounded-circle" src="{{ asset('public/storage/' . $admin->image) }}"
                             alt="">
                         <span class="count bg-success"></span>
                     </div>
                     <div class="profile-name">
-                        <h5 class="mb-0 font-weight-normal">{{ Auth::user()->name ?? 'Admin' }}</h5>
+                        <h5 class="mb-0 font-weight-normal">{{ Auth::user()->first_name ?? 'Admin' }}</h5>
                         <span>Administrator</span>
                     </div>
                 </div>
@@ -129,14 +129,6 @@
         <li class="nav-item nav-category">
             <span class="nav-link">CMS Management</span>
         </li>
-
-        <li class="nav-item menu-items {{ request()->routeIs('admin.banner') ? 'active' : '' }}">
-            <a class="nav-link" href="">
-                <span class="menu-icon"><i class="mdi mdi-image-area"></i></span>
-                <span class="menu-title">Homepage Banners</span>
-            </a>
-        </li>
-
         <li
             class="nav-item menu-items {{ request()->routeIs('admin.pages.manage-page') || request()->routeIs('admin.pages.cms.view-service') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.pages.cms.manage-page') }}">
@@ -164,6 +156,14 @@
             <a class="nav-link" href="{{ route('admin.pages.cms.manage-social-media') }}">
                 <span class="menu-icon"><i class="mdi mdi-facebook"></i></span>
                 <span class="menu-title">Manage Social Media</span>
+            </a>
+        </li>
+
+        <li
+            class="nav-item menu-items {{ request()->routeIs('admin.pages.cms.general-site-setting') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.pages.cms.general-site-setting') }}">
+                <span class="menu-icon"><i class="mdi mdi-image-area"></i></span>
+                <span class="menu-title">General Site Setting</span>
             </a>
         </li>
 

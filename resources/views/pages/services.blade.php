@@ -19,97 +19,74 @@
                 </p>
             </div>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-1.jpg') }}" class="img-fluid rounded-top w-100"
-                                alt="Image">
+                @if (!empty($services))
+                    @foreach ($services as $service)
+                        <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="service-item">
+                                <div class="service-img">
+                                    @if (!empty($service->banner_image))
+                                        <img src="{{ asset('public/storage/' . $service->banner_image) }}"
+                                            class="img-fluid rounded-top w-100" alt="{{ $service->title ?? '' }}">
+                                    @endif
+                                </div>
+                                <div class="rounded-bottom p-4">
+                                    <a href="#" class="h4 d-inline-block mb-4"> {{ $service->title ?? '' }}</a>
+                                    <p class="mb-4">{{ $service->description ?? '' }}
+                                    </p>
+                                    <a class="btn btn-primary rounded-pill py-2 px-4"
+                                        href="{{ route('pages.service.details', Crypt::encrypt($service->id)) }}">Learn
+                                        More</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4"> Strategy Consulting</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4"
-                                href="{{ route('pages.service.details', '21') }}">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-2.jpg') }}" class="img-fluid rounded-top w-100"
-                                alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Financial Advisory</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-3.jpg') }}" class="img-fluid rounded-top w-100"
-                                alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Managements</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                    @endforeach
+                @else
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="{{ asset('public/assets/images/service-1.jpg') }}"
+                                    class="img-fluid rounded-top w-100" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4"> Strategy Consulting</a>
+                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
+                                    Excepturi facilis neque nesciunt similique officiis veritatis,
+                                </p>
+                                <a class="btn btn-primary rounded-pill py-2 px-4">Learn More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-4.jpg') }}" class="img-fluid rounded-top w-100"
-                                alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Supply Optimization</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-5.jpg') }}" class="img-fluid rounded-top w-100"
-                                alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Hr Consulting</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="{{ asset('public/assets/images/service-2.jpg') }}"
+                                    class="img-fluid rounded-top w-100" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">Financial Advisory</a>
+                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
+                                    Excepturi facilis neque nesciunt similique officiis veritatis,
+                                </p>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-6.jpg') }}" class="img-fluid rounded-top w-100"
-                                alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Marketing Consulting</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="{{ asset('public/assets/images/service-3.jpg') }}"
+                                    class="img-fluid rounded-top w-100" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">Managements</a>
+                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
+                                    Excepturi facilis neque nesciunt similique officiis veritatis,
+                                </p>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>

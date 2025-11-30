@@ -149,12 +149,53 @@
                                 <div class="col-md-6">
                                     <lable class="form-label">Contact Title</lable><span class="text-danger">*</span>
                                     <input type="text" name="contact_title" id="contact-title" class="form-control"
-                                        value="{{ old('contact', $generalSetting->contact_title ?? '') }}">
+                                        value="{{ old('contact_title', $generalSetting->contact_title ?? '') }}">
                                 </div>
                                 <div class="col-md-6">
                                     <lable class="form-label">Contact Description</lable><span
                                         class="text-danger">*</span>
                                     <textarea type="text" name="contact_description" id="contact-description" class="form-control"> {{ $generalSetting->contact_description ?? '' }}</textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary m-4" style="float: right">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial Section -->
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Testimonial Section</h4>
+                        <form action="{{ route('admin.pages.cms.general-testimonial-setting') }}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <lable class="form-label">Testimonial Title</lable><span class="text-danger">*</span>
+                                    <input type="text" name="testimonial_title" id="testimonial-title"
+                                        class="form-control"
+                                        value="{{ old('testimonial_title', $generalSetting->testimonial_title ?? '') }}">
+                                </div>
+                                <div class="col-md-7">
+                                    <lable class="form-label">Testimonial Description</lable><span
+                                        class="text-danger">*</span>
+                                    <textarea type="text" name="testimonial_description" id="testimonial-description" class="form-control"> {{ $generalSetting->testimonial_description ?? '' }}</textarea>
+                                </div>
+                                <div class="col-md-4 mt-3">
+                                    <lable class="form-label">Happy Traders</lable><span class="text-danger">*</span>
+                                    <input type="text" name="happy_traders" id="happy-traders" class="form-control"
+                                        value="{{ old('happy_traders', $generalSetting->happy_traders ?? '') }}">
+                                </div>
+                                <div class="col-md-4 mt-3">
+                                    <lable class="form-label">Client Rating</lable><span class="text-danger">*</span>
+                                    <input type="text" name="client_rating" id="client-rating" class="form-control"
+                                        value="{{ old('client_rating', $generalSetting->client_rating ?? '') }}">
+                                </div>
+                                <div class="col-md-4 mt-3">
+                                    <lable class="form-label">Client Rating</lable><span class="text-danger">*</span>
+                                    <input type="text" name="total_client_volume" id="total-client-volume"
+                                        class="form-control"
+                                        value="{{ old('total_client_volume', $generalSetting->total_client_volume ?? '') }}">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary m-4" style="float: right">Save Changes</button>

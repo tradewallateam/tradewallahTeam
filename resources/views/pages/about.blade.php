@@ -106,8 +106,8 @@
                                     @endif
                                 </div>
                                 <div class="team-title">
-                                    <h4 class="mb-0">{{ $member->name ?? 'Not Available' }}</h4>
-                                    <p class="mb-0">{{ $member->position ?? 'Not Available' }}</p>
+                                    <h4 class="mb-0">{{ $member->name ?? '' }}</h4>
+                                    <p class="mb-0">{{ $member->position ?? '' }}</p>
                                 </div>
                                 <div class="team-icon">
                                     <a class="btn btn-primary btn-sm-square rounded-circle me-3"

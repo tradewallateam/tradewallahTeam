@@ -25,6 +25,11 @@ return new class extends Migration
             $table->text('risk_disclaimer_description')->nullable();
             $table->string('contact_title')->nullable();
             $table->text('contact_description')->nullable();
+            $table->string('testimonial_title')->nullable();
+            $table->text('testimonial_description')->nullable();
+            $table->string('happy_traders')->nullable();
+            $table->string('client_rating')->nullable();
+            $table->string('total_client_volume')->nullable();
             $table->timestamps();
         });
     }

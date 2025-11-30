@@ -164,7 +164,20 @@
                 <span class="menu-title">Gallery Setting</span>
             </a>
         </li>
+        <li
+            class="nav-item menu-items {{ request()->routeIs('admin.pages.cms.client-testimonials') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.pages.cms.client-testimonials') }}">
+                <span class="menu-icon"><i class="mdi mdi-facebook"></i></span>
+                <span class="menu-title">Client Testimonial</span>
+            </a>
+        </li>
 
+        <li class="nav-item menu-items {{ request()->routeIs('admin.pages.cms.paid-links') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.pages.cms.paid-links') }}">
+                <span class="menu-icon"><i class="mdi mdi-image-area"></i></span>
+                <span class="menu-title">Paid Links</span>
+            </a>
+        </li>
         <li
             class="nav-item menu-items {{ request()->routeIs('admin.pages.cms.general-site-setting') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.pages.cms.general-site-setting') }}">

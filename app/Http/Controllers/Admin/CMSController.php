@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\AboutCart;
+use App\Models\ClientTestimonial;
 use App\Models\ContactSetting;
 use App\Models\GalleryFolder;
 use App\Models\GalleryImage;
 use App\Models\GeneralSiteSetting;
 use App\Models\Header;
+use App\Models\PaidLink;
 use App\Models\Service;
 use App\Models\ServiceDetails;
 use App\Models\SocialMedia;
@@ -459,6 +461,21 @@ class CMSController extends Controller
             return redirect()->back()->with('failed', $th->getMessage())->withInput();
         }
     }
+    public function generalTestimonialSetting(Request $request)
+    {
+        try {
+            $setting = GeneralSiteSetting::first() ?? new GeneralSiteSetting();
+            $setting->testimonial_title = $request->testimonial_title;
+            $setting->testimonial_description = $request->testimonial_description;
+            $setting->happy_traders = $request->happy_traders;
+            $setting->client_rating = $request->client_rating;
+            $setting->total_client_volume = $request->total_client_volume;
+            $setting->save();
+            return redirect()->back()->with('success', 'Setting update successfully!!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage())->withInput();
+        }
+    }
 
     public function contactSetting(Request $request)
     {
@@ -592,6 +609,105 @@ class CMSController extends Controller
             $image->status = !$image->status;
             $image->save();
             return redirect()->back()->with('success', 'Image status change successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage());
+        }
+    }
+
+    public function clientTestimonials()
+    {
+        $testimonials = ClientTestimonial::get();
+        return view('admin.pages.cms.client-testimonial', compact('testimonials'));
+    }
+
+    public function addTestimonial(Request $request)
+    {
+        try {
+            $testimonial = new ClientTestimonial();
+            $testimonial->name = $testimonial->name;
+            $testimonial->designation = $request->designation;
+            if ($request->hasFile('image')) {
+                $testimonial->image = $request->file('image')->store('client/testimonial', 'public');
+            }
+            $testimonial->rating = $request->rating;
+            $testimonial->message = $request->message;
+            $testimonial->is_active = $request->is_active;
+            $testimonial->save();
+            return redirect()->back()->with('success', "Testimonial added successfully!!");
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage());
+        }
+    }
+
+    public function clientTestimonialStatusChange($id)
+    {
+        try {
+            $testimonial = ClientTestimonial::findOrFail(Crypt::decrypt($id));
+            $testimonial->is_active = !$testimonial->is_active;
+            $testimonial->save();
+            return redirect()->back()->with('success', 'Status change successfully!!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage());
+        }
+    }
+
+    public function deleteClientTestimonial($id)
+    {
+        try {
+            $clientTestimonial = ClientTestimonial::findOrFail(Crypt::decrypt($id));
+            if ($clientTestimonial) {
+                $clientTestimonial->delete();
+                return redirect()->back()->with('success', 'Testimonial delete successfully!!');
+            }
+            return redirect()->back()->with('failed', 'Somthing error occured');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage());
+        }
+    }
+
+    public function paidLinks()
+    {
+        $links = PaidLink::get();
+        return view('admin.pages.cms.paid-links', compact('links'));
+    }
+
+    public function addPaidLink(Request $request)
+    {
+        try {
+            $link = new PaidLink();
+            $link->link_name = $request->link_name;
+            $link->type = $request->type;
+            $link->link_url = Crypt::encrypt($request->link_url);
+            $link->status = $request->status;
+            $link->save();
+
+            return back()->with('success', 'link added successfully!!');
+        } catch (\Throwable $th) {
+            return back()->with('failed', $th->getMessage());
+        }
+    }
+
+    public function paidLinkChangeStatus($id)
+    {
+        try {
+            $link = PaidLink::findOrFail(Crypt::decrypt($id));
+            $link->status = ! $link->status;
+            $link->save();
+            return back()->with('success', 'Status change successfully!');
+        } catch (\Throwable $th) {
+            return back()->with('failed', $th->getMessage());
+        }
+    }
+
+    public function paidLinkDelete($id)
+    {
+        try {
+            $link = PaidLink::findOrFail(Crypt::decrypt($id));
+            if ($link) {
+                $link->delete();
+                return redirect()->back()->with('success', 'Link Deleted successfully!!');
+            }
+            return redirect()->back()->with('failed', 'Somthing error occured');
         } catch (\Throwable $th) {
             return redirect()->back()->with('failed', $th->getMessage());
         }

@@ -122,3 +122,110 @@
         </div>
     </div>
 </div>
+
+<!-- Client Testimonials -->
+<div class="modal fade" id="addTestimonials" tabindex="-1" aria-labelledby="addTestimonialsLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addTestimonialsLabel">Add Client Testimonial</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('admin.pages.cms.add-client-testimonial') }}" method="POST"
+                enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group mb-3">
+                            <label for="" class="form-label">Name</label><span class="text-danger">*</span>
+                            <input type="text" class="form-control" name="name" placeholder="Enter Full Nname"
+                                value="{{ old('name') }}" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="" class="form-label">Designation</label><span
+                                class="text-danger">*</span>
+                            <input type="text" class="form-control" name="designation"
+                                placeholder="Enter designation" value="{{ old('designation') }}" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="" class="form-label">Rating</label><span class="text-danger">*</span>
+                            <input type="text" class="form-control" name="rating" placeholder="Enter rating"
+                                value="{{ old('rating') }}" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="" class="form-label">Message</label><span
+                                class="text-danger">*</span>
+                            <textarea name="message" id="message" cols="30" rows="10" class="form-control" required>{{ old('message') }}</textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="" class="form-label">Select Image</label><span
+                                class="text-danger">*</span>
+                            <input type="file" class="form-control" name="image" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="" class="form-label">Is Active</label>
+                            <select name="is_active" id="is_active" class="form-control">
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Links -->
+<div class="modal fade" id="addLinks" tabindex="-1" aria-labelledby="addLinksLabel" aria-hidden="true">
+    <div class="modal-dialog modal-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addLinksLabel">Add Client Testimonial</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('admin.pages.cms.add-paid-link') }}" method="POST"
+                enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group mb-3">
+                            <label for="" class="form-label">Links Name</label><span
+                                class="text-danger">*</span>
+                            <input type="text" class="form-control" name="link_name"
+                                placeholder="Enter Link Name" value="{{ old('link_name') }}" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="" class="form-label">Type</label><span class="text-danger">*</span>
+                            <select name="type" id="type" class="form-control">
+                                <option value="paid">Paid</option>
+                                <option value="free">Free</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="" class="form-label">Links Url</label><span
+                                class="text-danger">*</span>
+                            <input type="url" class="form-control" name="link_url" placeholder="Enter Url"
+                                value="{{ old('link_url') }}" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="" class="form-label">Is Active</label>
+                            <select name="status" id="status" class="form-control">
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

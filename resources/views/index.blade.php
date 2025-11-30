@@ -90,8 +90,8 @@
                 <p class="mb-0">
                     {{ $setting->service_description ??
                         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                            sint dolorem autem obcaecati, ipsam mollitia hic." }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            sint dolorem autem obcaecati, ipsam mollitia hic." }}
                 </p>
             </div>
             <div class="row g-4">
@@ -349,7 +349,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <a href="#" class="btn btn-outline-primary rounded-pill py-3 px-5">Get Started</a>
+                        <a href="{{ route('pages.contact') }}" class="btn btn-outline-primary rounded-pill py-3 px-5">Get
+                            Started</a>
                     </div>
                 </div>
 
@@ -377,7 +378,8 @@
                                 <li class="py-2"><i class="fa fa-check text-primary me-3"></i>Priority 24/7 Support</li>
                             </ul>
                         </div>
-                        <a href="#" class="btn btn-primary rounded-pill py-3 px-5">Get Started Now</a>
+                        <a href="{{ route('pages.contact') }}" class="btn btn-primary rounded-pill py-3 px-5">Get Started
+                            Now</a>
                     </div>
                 </div>
 
@@ -401,14 +403,15 @@
                                 </li>
                             </ul>
                         </div>
-                        <a href="#" class="btn btn-outline-primary rounded-pill py-3 px-5">Contact Us</a>
+                        <a href="{{ route('pages.contact') }}"
+                            class="btn btn-outline-primary rounded-pill py-3 px-5">Contact Us</a>
                     </div>
                 </div>
             </div>
 
             <div class="text-center mt-5 wow fadeInUp" data-wow-delay="0.8s">
                 <p class="mb-3">Need a custom enterprise solution?</p>
-                <a href="{{ url('/contact') }}" class="btn btn-primary rounded-pill py-3 px-5">Talk to Sales</a>
+                <a href="{{ route('pages.contact') }}" class="btn btn-primary rounded-pill py-3 px-5">Talk to Sales</a>
             </div>
         </div>
     </div>
@@ -483,8 +486,7 @@
                     <h1 class="display-5 text-white mb-4">{{ $setting->contact_title ?? 'Contact to our expert' }}</h1>
                     <p class="text-white mb-4 opacity-90">
                         {{ $setting->contact_description ??
-                            " Whether you're new to trading or an experienced investor, our team is ready to help you succeed.
-                                                Ask about account opening, platforms, spreads, or personalized strategies." }}
+                            " Whether you're new to trading or an experienced investor, our team is ready to help you succeed. Ask about account opening, platforms, spreads, or personalized strategies." }}
                     </p>
                     <div class="d-flex flex-column gap-4">
                         <div class="d-flex align-items-center text-white">
@@ -494,7 +496,7 @@
                             </div>
                             <div>
                                 <h5 class="text-white mb-1">Call Us Now</h5>
-                                <h4 class="mb-0 text-white">+012 345 6789</h4>
+                                <h4 class="mb-0 text-white">{{ $contact->phone_number ?? '+012 345 6789' }}</h4>
                             </div>
                         </div>
                         <div class="d-flex align-items-center text-white">
@@ -504,7 +506,7 @@
                             </div>
                             <div>
                                 <h5 class="text-white mb-1">Email Us</h5>
-                                <h4 class="mb-0 text-white">support@yourtrading.com</h4>
+                                <h4 class="mb-0 text-white">{{ $contact->email ?? 'support@yourtrading.com' }}</h4>
                             </div>
                         </div>
                         <div class="d-flex align-items-center text-white">
@@ -524,25 +526,34 @@
                 <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.4s">
                     <div class="bg-white rounded p-5 shadow-lg">
                         <h3 class="text-primary mb-4">Send Us a Message</h3>
-                        <form action="" method="POST">
+                        <form action="{{ route('contact.submit') }}" method="POST">
                             @csrf
                             <div class="row g-4">
                                 <div class="col-md-6">
-                                    <input type="text" name="name"
+                                    <input type="text" name="name" required
                                         class="form-control form-control-lg border-primary" placeholder="Your Full Name"
                                         required>
+                                    @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" name="email"
+                                    <input type="email" name="email" required
                                         class="form-control form-control-lg border-primary" placeholder="Your Email"
                                         required>
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" name="phone"
+                                    <input type="text" name="phone_number" required
                                         class="form-control form-control-lg border-primary" placeholder="Phone Number">
+                                    @error('phone_number')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <select name="interest" class="form-select form-control-lg border-primary" required>
+                                    <select name="subject" class="form-select form-control-lg border-primary" required>
                                         <option value="">I'm interested in...</option>
                                         <option value="demo">Free Demo Account</option>
                                         <option value="live">Live Trading Account</option>
@@ -550,16 +561,30 @@
                                         <option value="signals">Trading Signals</option>
                                         <option value="education">Training & Education</option>
                                     </select>
+                                    @error('subject')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-12">
                                     <textarea name="message" class="form-control form-control-lg border-primary" rows="5"
-                                        placeholder="How can we help you today?"></textarea>
+                                        placeholder="How can we help you today?">{{ old('message') }}</textarea>
+                                    @error('message')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary rounded-pill py-3 px-5 w-100">
                                         <i class="fas fa-paper-plane me-2"></i> Send Message Now
                                     </button>
                                 </div>
+
+                                @session('success')
+                                    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                                        <strong>Success!</strong> Your action has been completed successfully.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endsession
                                 <div class="col-12 text-center">
                                     <small class="text-muted">
                                         <i class="fas fa-shield-alt text-primary me-2"></i>
@@ -574,4 +599,145 @@
         </div>
     </div>
     <!-- Contact Form Section End -->
+
+    <!-- Testimonial Start -->
+    <div class="container-fluid testimonial py-5"
+        style="background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('{{ asset('public/assets/images/testimonial-bg.jpg') }}') no-repeat center center/cover');">
+        <div class="container py-5">
+            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+                <h4 class="text-primary">Testimonials</h4>
+                <h1 class="display-5 mb-4">{{ $setting->testimonial_title ?? 'What Our Clients Say' }}</h1>
+                <p class="mb-0  opacity-90">
+                    {{ $setting->testimonial_description ?? 'Real traders, real results, and experiences. See why thousands trust us with their capital every day.' }}
+                </p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                @if (!empty($testimonials) && $testimonials->count() > 0)
+                    @foreach ($testimonials as $testimonial)
+                        <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="testimonial-item bg-white rounded p-4 shadow-sm h-100">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="flex-shrink-0">
+                                        @if (!empty($testimonial->image))
+                                            <img src="{{ asset('public/storage/' . $testimonial->image) }}"
+                                                class="rounded-circle border border-4 border-white shadow"
+                                                style="width: 80px; height: 80px; object-fit: cover;"
+                                                alt="{{ $testimonial->name }}">
+                                        @else
+                                            <img src="{{ asset('public/assets/images/testimonial-1.jpg') }}"
+                                                class="rounded-circle border border-4 border-white shadow"
+                                                style="width: 80px; height: 80px; object-fit: cover;" alt="Client">
+                                        @endif
+                                    </div>
+                                    <div class="ms-4">
+                                        <h5 class="mb-1">{{ $testimonial->name ?? 'Anonymous Trader' }}</h5>
+                                        <p class="mb-0 text-muted">{{ $testimonial->designation ?? 'Verified Client' }}
+                                        </p>
+                                        <div class="text-warning">
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                <i
+                                                    class="fas fa-star {{ $i <= ($testimonial->rating ?? 5) ? '' : '-half-alt' }}"></i>
+                                            @endfor
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mb-0 fst-italic">
+                                    "{{ $testimonial->message ?? 'Excellent service and very professional team. My account has grown steadily thanks to their signals and support.' }}"
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <!-- Default fallback testimonials if none exist in DB -->
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="testimonial-item bg-white rounded p-4 shadow-sm h-100">
+                            <div class="d-flex align-items-center mb-4">
+                                <img src="{{ asset('public/assets/images/testimonial-1.jpg') }}"
+                                    class="rounded-circle border border-4 border-white shadow"
+                                    style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                                <div class="ms-4">
+                                    <h5 class="mb-1">Michael Chen</h5>
+                                    <p class="mb-0 text-muted">Full-Time Trader</p>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-0 fst-italic">
+                                "Best decision I ever made was switching to this broker. Tight spreads, fast execution, and
+                                the personal manager actually cares about my results."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="testimonial-item bg-white rounded p-4 shadow-sm h-100">
+                            <div class="d-flex align-items-center mb-4">
+                                <img src="{{ asset('public/assets/images/testimonial-2.jpg') }}"
+                                    class="rounded-circle border border-4 border-white shadow"
+                                    style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                                <div class="ms-4">
+                                    <h5 class="mb-1">Sarah Williams</h5>
+                                    <p class="mb-0 text-muted">Crypto Enthusiast</p>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-0 fst-italic">
+                                "I've tried many platforms, but none come close to the support and tools here. Their daily
+                                signals alone paid for my Pro account in the first month!"
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="testimonial-item bg-white rounded p-4 shadow-sm h-100">
+                            <div class="d-flex align-items-center mb-4">
+                                <img src="{{ asset('public/assets/images/testimonial-3.jpg') }}"
+                                    class="rounded-circle border border-4 border-white shadow"
+                                    style="width: 80px; height: 80px; object-fit: cover;" alt="">
+                                <div class="ms-4">
+                                    <h5 class="mb-1">James Rodriguez</h5>
+                                    <p class="mb-0 text-muted">Forex Trader</p>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-0 fst-italic">
+                                "Withdrawals are instant, support replies in minutes, and the VIP webinars are pure gold.
+                                Highly recommend to serious traders."
+                            </p>
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+            <div class="text-center mt-5 wow fadeInUp" data-wow-delay="0.8s">
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <h2 class=" mb-0">{{ $setting->happy_traders ?? '10,000+' }}</h2>
+                        <p class=" opacity-75">Happy Traders Worldwide</p>
+                    </div>
+                    <div class="col-auto mx-5">
+                        <h2 class=" mb-0">{{ $setting->client_rating ?? '4.5/5' }}</h2>
+                        <p class=" opacity-75">Average Client Rating</p>
+                    </div>
+                    <div class="col-auto">
+                        <h2 class=" mb-0">{{ $setting->total_client_volume ?? "$2B+" }}</h2>
+                        <p class=" opacity-75">Total Client Volume</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
 @endsection

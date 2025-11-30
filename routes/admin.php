@@ -59,12 +59,10 @@ Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.'
             Route::post('general-pricing-setting', 'generalPricingSetting')->name('general-pricing-setting');
             Route::post('general-risk-disclaimer-setting', 'generalRiskDisclaimerSetting')->name('general-risk-disclaimer-setting');
             Route::post('general-contact-setting', 'generalContactSetting')->name('general-contact-setting');
-
+            Route::post('general-testimonial-setting', 'generalTestimonialSetting')->name('general-testimonial-setting');
 
             Route::post('contact-setting', 'contactSetting')->name('contact-setting');
-
             // GAllery Setting       
-
             Route::get('gallery-setting', 'gallerySetting')->name('gallery-setting');
             Route::post('add-gallery-folder', 'addGallerFolder')->name('add-galler-folder');
             Route::patch('change-gallery-folder-status/{id}', 'changeGalleryFolderStatus')->name('change-gallery-folder-status');
@@ -73,6 +71,18 @@ Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.'
             Route::post('upload-galler-images/{folder_id}', 'updateGalleryImages')->name('upload-galley-images');
             Route::get('gallery-image-delete/{image_id}', 'galleryImageDelete')->name('gallery-image-delete');
             Route::get('gallery-image-change-status/{image_id}', 'galleryImageChangeStatus')->name('gallery-image-change-status');
+
+            Route::get('client-testimonials', 'clientTestimonials')->name('client-testimonials');
+            Route::post('add-client-testimonial', 'addTestimonial')->name('add-client-testimonial');
+            Route::get('client-testimonial-status-change/{id}', 'clientTestimonialStatusChange')->name('client-testimonial-status-change');
+            Route::get('client-testimonial-delete/{id}', 'deleteClientTestimonial')->name('delete-client-testimonial');
+
+            // Paid Links
+
+            Route::get('paid-link', 'paidLinks')->name('paid-links');
+            Route::post('add-paid-link', 'addPaidLink')->name('add-paid-link');
+            Route::get('paid-link-change-status/{id}', 'paidLinkChangeStatus')->name('paid-link-change-status');
+            Route::get('paid-link-delete/{id}', 'paidLinkDelete')->name('paid-link-delete');
         });
     });
 });

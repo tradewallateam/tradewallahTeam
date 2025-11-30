@@ -19,5 +19,10 @@ class GeneralSiteSetting extends Model
         'rist_disclaimer_description',
         'contact_title',
         'contact_description',
+        'testimonial_title',
+        'testimonial_description',
+        'happy_traders',
+        'client_rating',
+        'total_client_volume',
     ];
 }

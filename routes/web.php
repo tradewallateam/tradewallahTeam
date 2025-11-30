@@ -12,6 +12,9 @@ Route::middleware(['frontend.data'])->controller(PageController::class)->group(f
     Route::get('/services', 'services')->name('pages.services');
     Route::get('/services/{id}', 'serviceDetails')->name('pages.service.details');
     Route::get('/contact', 'contact')->name('pages.contact');
+    Route::get('/faq', 'faq')->name('pages.faq');
+    Route::get('/risk-disclaimer', 'riskDisclaimer')->name('pages.risk');
+    Route::get('/gallery', 'gallery')->name('pages.gallery');
 
     Route::middleware(['member.auth'])->group(function () {
         Route::get('/dashboard', 'dashboard')->name('pages.dashboard');

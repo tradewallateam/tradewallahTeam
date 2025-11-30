@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('pricing_title')->nullable();
             $table->text('pricing_description')->nullable();
             $table->string('risk_disclaimer_title')->nullable();
-            $table->string('risk_disclaimer_description')->nullable();
-            $table->text('contact_title')->nullable();
+            $table->text('risk_disclaimer_description')->nullable();
+            $table->string('contact_title')->nullable();
             $table->text('contact_description')->nullable();
             $table->timestamps();
         });

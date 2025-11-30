@@ -119,17 +119,17 @@
                             class="manage-top-header" method="POST">
                             @csrf
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <lable class="form-label">Risk Disclaimer Title</lable><span
                                         class="text-danger">*</span>
                                     <input type="text" name="risk_disclaimer_title" id="risk-disclaimer-title"
                                         class="form-control"
                                         value="{{ old('risk-disclaimer_title', $generalSetting->risk_disclaimer_title ?? '') }}">
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12 mt-4">
                                     <lable class="form-label">Risk Disclaimer Description</lable><span
                                         class="text-danger">*</span>
-                                    <textarea type="text" name="risk_disclaimer_description" id="risk-disclaimer-description" class="form-control">{{ $generalSetting->risk_disclaimer_description ?? '' }}</textarea>
+                                    <textarea type="text" name="risk_disclaimer_description" id="editor" class="form-control">{{ $generalSetting->risk_disclaimer_description ?? '' }}</textarea>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary m-4" style="float: right">Save Changes</button>

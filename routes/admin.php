@@ -59,6 +59,20 @@ Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.'
             Route::post('general-pricing-setting', 'generalPricingSetting')->name('general-pricing-setting');
             Route::post('general-risk-disclaimer-setting', 'generalRiskDisclaimerSetting')->name('general-risk-disclaimer-setting');
             Route::post('general-contact-setting', 'generalContactSetting')->name('general-contact-setting');
+
+
+            Route::post('contact-setting', 'contactSetting')->name('contact-setting');
+
+            // GAllery Setting       
+
+            Route::get('gallery-setting', 'gallerySetting')->name('gallery-setting');
+            Route::post('add-gallery-folder', 'addGallerFolder')->name('add-galler-folder');
+            Route::patch('change-gallery-folder-status/{id}', 'changeGalleryFolderStatus')->name('change-gallery-folder-status');
+            Route::get('gallery-folder-delete/{id}', 'gellaryFolderDelete')->name('gallery-folder-delete');
+            Route::get('gallery/{folder_name}/{id}', 'viewGallerFolder')->name('view-gallery-folder');
+            Route::post('upload-galler-images/{folder_id}', 'updateGalleryImages')->name('upload-galley-images');
+            Route::get('gallery-image-delete/{image_id}', 'galleryImageDelete')->name('gallery-image-delete');
+            Route::get('gallery-image-change-status/{image_id}', 'galleryImageChangeStatus')->name('gallery-image-change-status');
         });
     });
 });

@@ -16,9 +16,11 @@
                 <div class="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
                     <div>
                         <h4 class="text-primary">About Us</h4>
-                        <h1 class="display-5 mb-4">Meet our company unless miss the opportunity</h1>
-                        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum velit
-                            temporibus repudiandae ipsa, eaque perspiciatis cumque incidunt tenetur sequi reiciendis.
+                        <h1 class="display-5 mb-4">
+                            {{ $setting->about_title ?? 'Meet our company unless miss the opportunity' }}</h1>
+                        <p class="mb-4">
+                            {{ $setting->about_description ??
+                                'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum velit temporibus repudiandae ipsa, eaque perspiciatis cumque incidunt tenetur sequi reiciendis.' }}
                         </p>
                         <div class="row g-4">
                             <div class="col-md-6 col-lg-6 col-xl-6">
@@ -84,58 +86,90 @@
         <div class="container pb-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
                 <h4 class="text-primary">Our Services</h4>
-                <h1 class="display-5 mb-4">We Services provided best offer</h1>
-                <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis
-                    cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
-                    sint dolorem autem obcaecati, ipsam mollitia hic.
+                <h1 class="display-5 mb-4">{{ $setting->service_title ?? 'We Services provided best offer' }}</h1>
+                <p class="mb-0">
+                    {{ $setting->service_description ??
+                        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            sint dolorem autem obcaecati, ipsam mollitia hic." }}
                 </p>
             </div>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-1.jpg') }}" class="img-fluid rounded-top w-100"
-                                alt="Image">
+
+                @if (!empty($services))
+                    @foreach ($services as $service)
+                        <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="service-item">
+                                <div class="service-img">
+                                    @if (!empty($service->banner_image))
+                                        <img src="{{ asset('public/storage/' . $service->banner_image) }}"
+                                            class="img-fluid rounded-top w-100" alt="Image">
+                                    @else
+                                        <img src="{{ asset('public/assets/images/service-1.jpg') }}"
+                                            class="img-fluid rounded-top w-100" alt="Image">
+                                    @endif
+                                </div>
+                                <div class="rounded-bottom p-4">
+                                    <a href="#" class="h4 d-inline-block mb-4"> {{ $service->title ?? '' }}</a>
+                                    <p class="mb-4">
+                                        {{ $service->description ??
+                                            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint? Excepturi facilis neque nesciunt similique officiis veritatis,' }}
+                                    </p>
+                                    <a class="btn btn-primary rounded-pill py-2 px-4"
+                                        href="{{ route('pages.service.details', Crypt::encrypt($service->id)) }}">Learn
+                                        More</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4"> Strategy Consulting</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                    @endforeach
+                @else
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="{{ asset('public/assets/images/service-1.jpg') }}"
+                                    class="img-fluid rounded-top w-100" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4"> Strategy Consulting</a>
+                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
+                                    Excepturi facilis neque nesciunt similique officiis veritatis,
+                                </p>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-2.jpg') }}" class="img-fluid rounded-top w-100"
-                                alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Financial Advisory</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{{ asset('public/assets/images/service-3.jpg') }}" class="img-fluid rounded-top w-100"
-                                alt="Image">
-                        </div>
-                        <div class="rounded-bottom p-4">
-                            <a href="#" class="h4 d-inline-block mb-4">Managements</a>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
-                                Excepturi facilis neque nesciunt similique officiis veritatis,
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="{{ asset('public/assets/images/service-2.jpg') }}"
+                                    class="img-fluid rounded-top w-100" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">Financial Advisory</a>
+                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
+                                    Excepturi facilis neque nesciunt similique officiis veritatis,
+                                </p>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="{{ asset('public/assets/images/service-3.jpg') }}"
+                                    class="img-fluid rounded-top w-100" alt="Image">
+                            </div>
+                            <div class="rounded-bottom p-4">
+                                <a href="#" class="h4 d-inline-block mb-4">Managements</a>
+                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, sint?
+                                    Excepturi facilis neque nesciunt similique officiis veritatis,
+                                </p>
+                                <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -146,10 +180,10 @@
         <div class="container pb-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
                 <h4 class="text-primary">Our Team</h4>
-                <h1 class="display-5 mb-4">Meet Our Advisers</h1>
-                <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis
-                    cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
-                    sint dolorem autem obcaecati, ipsam mollitia hic.
+                <h1 class="display-5 mb-4">{{ $setting->team_title ?? 'Meet Our Advisers' }}</h1>
+                <p class="mb-0">
+                    {{ $setting->team_description ??
+                        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.' }}
                 </p>
             </div>
             <div class="row g-4">
@@ -287,9 +321,12 @@
         <div class="container py-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
                 <h4 class="text-primary">Our Pricing</h4>
-                <h1 class="display-5 mb-4">Choose the Perfect Plan for Your Trading Journey</h1>
-                <p class="mb-0">Transparent pricing with zero hidden fees. Start trading with the plan that fits your
-                    goals.</p>
+                <h1 class="display-5 mb-4">
+                    {{ $setting->pricing_title ?? 'Choose the Perfect Plan for Your Trading Journey' }}</h1>
+                <p class="mb-0">
+                    {{ $setting->pricing_description ??
+                        'Transparent pricing with zero hidden fees. Start trading with the plan that fits your goals.' }}
+                </p>
             </div>
 
             <div class="row g-5 justify-content-center">
@@ -384,38 +421,52 @@
                 <div class="col-12 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="border-start border-primary border-5 ps-4">
                         <h4 class="text-primary mb-3">Important Risk Disclaimer</h4>
-                        <h2 class="display-6 mb-4">Trading Involves Substantial Risk</h2>
+                        <h2 class="display-6 mb-4">
+                            {{ $setting->risk_disclaimer_title ?? 'Trading Involves Substantial Risk' }}</h2>
                     </div>
-                    <div class=" rounded p-5 ">
-                        <p class="lead text-dark mb-4">
-                            Trading foreign exchange, cryptocurrencies, stocks, CFDs, commodities, and other financial
-                            instruments on margin carries a <strong>high level of risk</strong> and may not be suitable for
-                            all investors.
-                        </p>
-                        <p class="text-dark mb-4">
-                            The high degree of leverage can work against you as well as for you. Before deciding to trade,
-                            you should carefully consider your investment objectives, level of experience, and risk
-                            appetite. There is a possibility that you could sustain a <strong>loss of some or all of your
-                                initial investment</strong> and therefore you should not invest money that you cannot afford
-                            to lose.
-                        </p>
-                        <p class="text-dark mb-4">
-                            You should be aware of all the risks associated with trading on margin and seek advice from an
-                            independent financial advisor if you have any doubts. Past performance is not indicative of
-                            future results. The content provided on this website is for informational and educational
-                            purposes only and should not be construed as investment advice or a recommendation to buy or
-                            sell any security or financial instrument.
-                        </p>
-                        <p class="text-dark mb-0">
-                            <strong>By using this website and/or opening an account, you acknowledge that you have read,
-                                understood, and agree to the full risk disclosure.</strong>
-                        </p>
-                        <hr class="my-4">
-                        <small class="text-muted">
-                            Trading involves risk. Losses can exceed deposits. Please ensure you fully understand the risks
-                            involved.
-                        </small>
-                    </div>
+
+                    @if (!empty($setting->risk_disclaimer_description))
+                        <div class="rounded p-5 ">
+                            {!! $setting->risk_disclaimer_description ?? '' !!}
+                        </div>
+                    @else
+                        <div class=" rounded p-5 ">
+                            <p class="lead text-dark mb-4">
+                                Trading foreign exchange, cryptocurrencies, stocks, CFDs, commodities, and other financial
+                                instruments on margin carries a <strong>high level of risk</strong> and may not be suitable
+                                for
+                                all investors.
+                            </p>
+                            <p class="text-dark mb-4">
+                                The high degree of leverage can work against you as well as for you. Before deciding to
+                                trade,
+                                you should carefully consider your investment objectives, level of experience, and risk
+                                appetite. There is a possibility that you could sustain a <strong>loss of some or all of
+                                    your
+                                    initial investment</strong> and therefore you should not invest money that you cannot
+                                afford
+                                to lose.
+                            </p>
+                            <p class="text-dark mb-4">
+                                You should be aware of all the risks associated with trading on margin and seek advice from
+                                an
+                                independent financial advisor if you have any doubts. Past performance is not indicative of
+                                future results. The content provided on this website is for informational and educational
+                                purposes only and should not be construed as investment advice or a recommendation to buy or
+                                sell any security or financial instrument.
+                            </p>
+                            <p class="text-dark mb-0">
+                                <strong>By using this website and/or opening an account, you acknowledge that you have read,
+                                    understood, and agree to the full risk disclosure.</strong>
+                            </p>
+                            <small class="text-muted">
+                                Trading involves risk. Losses can exceed deposits. Please ensure you fully understand the
+                                risks
+                                involved.
+                            </small>
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>
@@ -429,10 +480,11 @@
                 <!-- Left Side: Contact Info & CTA -->
                 <div class="col-lg-5 wow fadeInLeft" data-wow-delay="0.2s">
                     <h4 class="text-white mb-3">Start Trading Today</h4>
-                    <h1 class="display-5 text-white mb-4">Get in Touch With Our Experts</h1>
+                    <h1 class="display-5 text-white mb-4">{{ $setting->contact_title ?? 'Contact to our expert' }}</h1>
                     <p class="text-white mb-4 opacity-90">
-                        Whether you're new to trading or an experienced investor, our team is ready to help you succeed.
-                        Ask about account opening, platforms, spreads, or personalized strategies.
+                        {{ $setting->contact_description ??
+                            " Whether you're new to trading or an experienced investor, our team is ready to help you succeed.
+                                                Ask about account opening, platforms, spreads, or personalized strategies." }}
                     </p>
                     <div class="d-flex flex-column gap-4">
                         <div class="d-flex align-items-center text-white">

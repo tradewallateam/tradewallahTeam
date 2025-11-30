@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\ContactSetting;
 use App\Models\Header;
 use App\Models\SocialMedia;
 use Closure;
@@ -22,6 +23,7 @@ class FrontendDataMiddleware
             // Share any data needed across frontend views here
             'headerData' => Header::first(),
             'socialMediaLinks' => SocialMedia::first(),
+            'contact' => ContactSetting::first(),
         ]);
         return $next($request);
     }

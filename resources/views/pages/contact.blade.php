@@ -13,19 +13,19 @@
                 <div class="col-md-4">
                     <div class="p-4 bg-white rounded shadow-sm h-100">
                         <h5 class="text-primary mb-2"><i class="bi bi-geo-alt-fill me-2"></i>Address</h5>
-                        <p class="mb-0">123 Example Street, New York, NY, USA</p>
+                        <p class="mb-0">{{ $contact->address ?? '123 Example Street, New York, NY, USA' }}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="p-4 bg-white rounded shadow-sm h-100">
                         <h5 class="text-primary mb-2"><i class="bi bi-envelope-fill me-2"></i>Email</h5>
-                        <p class="mb-0">info@example.com</p>
+                        <p class="mb-0">{{ $contact->email ?? 'info@example.com' }}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="p-4 bg-white rounded shadow-sm h-100">
                         <h5 class="text-primary mb-2"><i class="bi bi-telephone-fill me-2"></i>Phone</h5>
-                        <p class="mb-0">+1 234 567 8900</p>
+                        <p class="mb-0">{{ $contact->phone_number ?? '+1 234 567 8900' }}</p>
                     </div>
                 </div>
             </div>
@@ -33,10 +33,9 @@
                 <div class="col-xl-6">
                     <div class="wow fadeInUp" data-wow-delay="0.2s">
                         <div class="bg-light p-5 rounded h-100">
-                            <h4 class="text-primary">Send Your Message</h4>
-                            <h4 class="lh-base mb-4">Receive messages instantly with our PHP and Ajax contact form -
-                                available in the <a href="https://htmlcodex.com/downloading/?item=3447">Pro Version</a>
-                                only.
+                            <h4 class="text-primary">{{ $contact->contact_title ?? "Send Your Message" }}</h4>
+                            <h4 class="lh-base mb-4">{{ $contact->contact_description ?? "Receive messages instantly with our PHP and Ajax contact form -
+                                available in the" }}
                             </h4>
                             <form action="{{ route('contact.submit') }}" method="POST">
                                 @csrf

@@ -17,7 +17,6 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-4">About Page Setting</h4>
-
                         <form action="{{ route('admin.pages.cms.update-page') }}" class="manage-top-header" method="POST"
                             enctype="multipart/form-data">
                             @csrf
@@ -175,6 +174,56 @@
                                 @endif
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="cart-title">Contact Page Setting</div>
+                        <form action="{{ route('admin.pages.cms.contact-setting') }}" method="POST">
+                            @csrf
+                            <div class="row mt-4">
+                                <div class="col-md-6 mt-4">
+                                    <label for="" class="form-label">Contact Title</label><span
+                                        class="text-danger">*</span>
+                                    <input type="text" name="contact_title" id="contact_title" class="form-control"
+                                        value="{{ old('contact_title', $contact->contact_title ?? '') }}">
+                                </div>
+                                <div class="col-md-6 mt-4">
+                                    <label for="" class="form-label">Contact Description</label><span
+                                        class="text-danger">*</span>
+                                    <input type="text" name="contact_description" id="contact_description"
+                                        class="form-control"
+                                        value="{{ old('contact_description', $contact->contact_title ?? '') }}">
+                                </div>
+                                <div class="col-md-4 mt-4">
+                                    <lable class="form-lable">Address</lable><span class="text-danger">*</span>
+                                    <input type="text" name="address" id="address"
+                                        value="{{ old('address', $contact->address ?? '') }}" class="form-control">
+                                </div>
+                                <div class="col-md-4 mt-4">
+                                    <lable class="form-lable">Eamil</lable><span class="text-danger">*</span>
+                                    <input type="email" name="email" id="email"
+                                        value="{{ old('email', $contact->email ?? '') }}" class="form-control">
+                                </div>
+                                <div class="col-md-4 mt-4">
+                                    <lable class="form-lable">Phone Number</lable><span class="text-danger">*</span>
+                                    <input type="text" name="phone_number" id="phone_number"
+                                        value="{{ old('phone_number', $contact->phone_number ?? '') }}"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <lable class="form-lable">Map Link</lable><span class="text-danger">*</span>
+                                    <textarea name="map_link" id="map_link" cols="30" rows="10" class="form-control">{{ old('map_link', $contact->map_link ?? '') }}</textarea>
+                                </div>
+                            </div>
+                            <button style="float: right;" class="btn btn-primary mt-4">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>

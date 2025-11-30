@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\ContactSetting;
+use App\Models\GalleryFolder;
+use App\Models\GeneralSiteSetting;
 use App\Models\Service;
 use App\Models\TeamMember;
 use Illuminate\Support\Facades\Crypt;
@@ -12,7 +15,9 @@ class PageController extends Controller
     public function home()
     {
         $teams = TeamMember::where('status', true)->get();
-        return view('index', compact('teams'));
+        $setting = GeneralSiteSetting::first();
+        $services = Service::where('is_active', true)->latest()->take(3)->get();
+        return view('index', compact('teams', 'setting', 'services'));
     }
 
     public function about()
@@ -48,5 +53,21 @@ class PageController extends Controller
     public function dashboard()
     {
         return view('pages.auth.dashboard');
+    }
+
+    public function faq()
+    {
+        return view('pages.faq');
+    }
+
+    public function riskDisclaimer()
+    {
+        return view('pages.risk-disclaimer');
+    }
+
+    public function gallery()
+    {
+        $gallaries = GalleryFolder::get();
+        return view('pages.gallery', compact('gallaries'));
     }
 }

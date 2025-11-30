@@ -158,6 +158,12 @@
                 <span class="menu-title">Manage Social Media</span>
             </a>
         </li>
+        <li class="nav-item menu-items {{ request()->routeIs('admin.pages.cms.gallery-setting') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.pages.cms.gallery-setting') }}">
+                <span class="menu-icon"><i class="mdi mdi-facebook"></i></span>
+                <span class="menu-title">Gallery Setting</span>
+            </a>
+        </li>
 
         <li
             class="nav-item menu-items {{ request()->routeIs('admin.pages.cms.general-site-setting') ? 'active' : '' }}">

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\AboutCart;
+use App\Models\ContactSetting;
+use App\Models\GalleryFolder;
+use App\Models\GalleryImage;
 use App\Models\GeneralSiteSetting;
 use App\Models\Header;
 use App\Models\Service;
@@ -16,6 +19,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
+use Termwind\Components\Raw;
 
 class CMSController extends Controller
 {
@@ -94,7 +98,8 @@ class CMSController extends Controller
 
     public function manageSocialMedia()
     {
-        return view('admin.pages.cms.manage-social-media');
+        $socialMedia = SocialMedia::first();
+        return view('admin.pages.cms.manage-social-media', compact('socialMedia'));
     }
 
     public function updateSocialMedia(Request $request)
@@ -107,18 +112,17 @@ class CMSController extends Controller
                 'linked_in' => 'required|url',
                 'twitter' => 'required|url',
             ]);
-            $socialMedia = SocialMedia::firstOrCreate(['id' => 1]);
-            $socialMedia->update([
-                'facebook' => $request->input('facebook'),
-                'instagram' => $request->input('instagram'),
-                'linked_in' => $request->input('linked_in'),
-                'twitter' => $request->input('twitter'),
-            ]);
-            return redirect()->route('admin.pages.cms.manage-social-media')
+            $socialMedia = SocialMedia::first() ?? new SocialMedia();
+            $socialMedia->facebook = $request->facebook;
+            $socialMedia->instagram = $request->instagram;
+            $socialMedia->linked_in = $request->linked_in;
+            $socialMedia->twitter = $request->twitter;
+            $socialMedia->save();
+            return redirect()->back()
                 ->with('success', 'Social media links updated successfully.');
         } catch (\Throwable $th) {
             return redirect()->back()
-                ->with('error', 'Error updating social media links: ' . $th->getMessage());
+                ->with('error', 'Error updating social media links: ' . $th->getMessage())->withInput();
         }
     }
 
@@ -126,7 +130,8 @@ class CMSController extends Controller
     {
         $about = About::with('aboutCarts')->first();
         $services = Service::all();
-        return view('admin.pages.cms.manage-page', compact('about', 'services'));
+        $contact = ContactSetting::first();
+        return view('admin.pages.cms.manage-page', compact('about', 'services', 'contact'));
     }
 
     public function updateAboutPage(Request $request)
@@ -144,7 +149,6 @@ class CMSController extends Controller
                 'cart_items.*.description'  => 'required_with:cart_items.*|string',
             ]);
 
-            // Update or Create the main About page
             $about = About::updateOrCreate(
                 ['id' => 1],
                 [
@@ -153,9 +157,7 @@ class CMSController extends Controller
                 ]
             );
 
-            // Handle Image 1
             if ($request->hasFile('image_1')) {
-                // Delete old image if exists
                 if ($about->image_1 && file_exists(public_path('storage/' . $about->image_1))) {
                     unlink(public_path('storage/' . $about->image_1));
                 }
@@ -164,7 +166,6 @@ class CMSController extends Controller
                 $about->save();
             }
 
-            // Handle Image 2
             if ($request->hasFile('image_2')) {
                 if ($about->image_2 && file_exists(public_path('storage/' . $about->image_2))) {
                     unlink(public_path('storage/' . $about->image_2));
@@ -174,17 +175,14 @@ class CMSController extends Controller
                 $about->save();
             }
 
-            // === Smart Cart Items: Update existing, Create new, Delete removed ===
             $incomingItems = $request->input('cart_items', []);
             $incomingIds   = array_filter(array_column($incomingItems, 'id')); // Only existing IDs
 
-            // Delete removed items
             if (!empty($incomingIds)) {
                 AboutCart::where('about_id', $about->id)
                     ->whereNotIn('id', $incomingIds)
                     ->delete();
             } else {
-                // If no items sent, delete all
                 AboutCart::where('about_id', $about->id)->delete();
             }
 
@@ -459,6 +457,143 @@ class CMSController extends Controller
             return redirect()->back()->with('success', 'Setting update successfully!!');
         } catch (\Throwable $th) {
             return redirect()->back()->with('failed', $th->getMessage())->withInput();
+        }
+    }
+
+    public function contactSetting(Request $request)
+    {
+        try {
+            $contact = ContactSetting::first() ?? new ContactSetting();
+            $contact->contact_title = $request->contact_title;
+            $contact->contact_description = $request->contact_description;
+            $contact->address = $request->address;
+            $contact->email  = $request->email;
+            $contact->phone_number  = $request->phone_number;
+            $contact->map_link  = $request->map_link;
+            $contact->save();
+
+            return redirect()->back()->with('success', 'Contact setting update successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage())->withInput();
+        }
+    }
+
+    public function gallerySetting(Request $request)
+    {
+        $folders = GalleryFolder::get();
+        return view('admin.pages.cms.gallery-setting', compact('folders'));
+    }
+
+    public function addGallerFolder(Request $request)
+    {
+        try {
+            GalleryFolder::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'status' => $request->status,
+            ]);
+            return redirect()->back()->with('success', 'Folder added successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage());
+        }
+    }
+
+    public function changeGalleryFolderStatus(Request $request, $id)
+    {
+        try {
+            $id = Crypt::decrypt($id);
+
+            $gallery = GalleryFolder::findOrFail($id);
+            $gallery->status = !$gallery->status;
+            $gallery->save();
+
+            return redirect()->back()->with('success', "Status has been changed");
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage())->withInput();
+        }
+    }
+
+    public function gellaryFolderDelete($id)
+    {
+        try {
+            $id  = Crypt::decrypt($id);
+            $folder = GalleryFolder::find($id);
+            if ($folder) {
+                $folder->delete();
+                return redirect()->back()->with('success', 'Folder deleted successfully!');
+            }
+            return redirect()->back()->with('failed', 'Folder not deleted!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage());
+        }
+    }
+
+    public function viewGallerFolder($folder_name, $folder_id)
+    {
+        $decId = Crypt::decrypt($folder_id);
+        $folder = GalleryFolder::with('galleryImage')->find($decId);
+
+        if (empty($folder)) {
+            return redirect()->back()->with('failed', 'Image not found');
+        }
+
+        return view('admin.pages.cms.gallery-image', compact('folder'));
+    }
+
+    public function updateGalleryImages(Request $request, $folder_id)
+    {
+        try {
+            $folderId = Crypt::decrypt($folder_id);
+
+            if ($request->hasFile('images')) {
+
+                foreach ($request->file('images') as $image) {
+
+                    $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                    $imagePath = $image->storeAs('gallery/' . $folderId, $imageName, 'public');
+
+                    GalleryImage::create([
+                        'gallery_folder_id' => $folderId,
+                        'image'     => $imagePath,
+                        'title' => $request->title ?? "",
+                        'status' => true,
+                    ]);
+                }
+            }
+
+            return back()->with('success', 'Images uploaded successfully!');
+        } catch (\Throwable $th) {
+            return back()->with('error', 'Something went wrong while uploading images.');
+        }
+    }
+
+    public function galleryImageDelete($image_id)
+    {
+        try {
+            $image = GalleryImage::findOrFail(Crypt::decrypt($image_id));
+
+            if (!$image) {
+                return redirect()->back()->with('failed', 'Image not found!');
+            }
+            $image->delete();
+
+            return redirect()->back()->with('success', 'Image successfully deleted!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage());
+        }
+    }
+
+    public function galleryImageChangeStatus($image_id)
+    {
+        try {
+
+            $Id = Crypt::decrypt($image_id);
+            $image = GalleryImage::findOrFail($Id);
+            $image->status = !$image->status;
+            $image->save();
+            return redirect()->back()->with('success', 'Image status change successfully!');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('failed', $th->getMessage());
         }
     }
 }

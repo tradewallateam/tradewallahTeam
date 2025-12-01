@@ -1,7 +1,12 @@
  <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-     <a href="" class="navbar-brand p-0">
-         <img src="{{ asset('public/assets/images/logo.jpg') }}" alt="Logo">
+     <a href="{{ route('admin.dashboard') }}" class="navbar-brand p-0">
+         @if (!empty($headerData->square_logo))
+             <img src="{{ asset('public/storage/' . $headerData->square_logo) }}" alt="Logo">
+         @else
+             <img src="{{ asset('public/assets/images/logo.jpg') }}" alt="Logo">
+         @endif
      </a>
+     <h1>TradeWalla</h1>
      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
          <span class="fa fa-bars"></span>
      </button>

@@ -148,13 +148,61 @@
 }
 
 .navbar-light .navbar-brand img {
-    max-height: 85px;
+    max-height: 59px;
     border-radius: 50%;
     transition: .5s;
 }
 
+.navbar h1 {
+    color: aqua;
+    font-style: inherit;
+    font-weight: 700;
+    font-family: fangsong;
+    font-size: xxx-large;
+}
+
+@media (max-width: 1300px) {
+    .navbar h1 {
+        font-size: xx-large;
+    }
+}
+
+@media (max-width: 1030px) {
+    .navbar h1 {
+        font-size: x-large;
+    }
+}
+
+@media (max-width: 991px) {
+    .navbar h1 {
+        color: black;
+        font-size: xx-large;
+    }
+}
+
+@media (max-width: 371px) {
+    .navbar h1 {
+        color: black;
+        font-size: x-large;
+    }
+}
+
+@media (max-width: 350px) {
+    .navbar h1 {
+        color: black;
+        font-size: x-large;
+    }
+}
+
 .sticky-top.navbar-light .navbar-brand img {
-    max-height: 45px;
+    max-height: 50px;
+}
+
+.sticky-top.navbar-light h1 {
+    color: black;
+    margin: 0;
+    font-size: xx-large;
+
 }
 
 .navbar .dropdown-toggle::after {

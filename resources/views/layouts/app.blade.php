@@ -7,6 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('public/storage/' . $headerData->favicon ?? '') }}">
     <meta content="" name="keywords">
     <meta content="" name="description">
 

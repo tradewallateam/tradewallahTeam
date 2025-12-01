@@ -1,7 +1,12 @@
 <!-- Carousel Start -->
 <div class="header-carousel owl-carousel">
     <div class="header-carousel-item">
-        <img src="{{ asset('public/assets/images/carousel-1.jpg') }}" class="img-fluid w-100" alt="Image">
+        @if (!empty($headerData->background_image_1))
+            <img src="{{ asset('public/storage/' . $headerData->background_image_1) }}" class="img-fluid w-100"
+                alt="Image">
+        @else
+            <img src="{{ asset('public/assets/images/carousel-1.jpg') }}" class="img-fluid w-100" alt="Image">
+        @endif
         <div class="carousel-caption">
             <div class="container">
                 <div class="row gy-0 gx-5">

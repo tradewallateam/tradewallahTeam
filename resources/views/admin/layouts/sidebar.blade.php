@@ -2,11 +2,21 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
         <a class="sidebar-brand brand-logo" href="{{ route('admin.dashboard') }}">
-            <img src="{{ asset('public/assets/images/logo.jpg') }}" alt="logo" />
+            @if (!empty($headerData->square_logo))
+                <img src="{{ asset('public/storage/' . $headerData->square_logo) }}"
+                    alt="{{ $headerData->title ?? '' }}" />
+            @else
+                <img src="{{ asset('public/assets/images/logo.jpg') }}" alt="logo" />
+            @endif
             <span>TradeWalla</span>
         </a>
         <a class="sidebar-brand brand-logo-mini" href="{{ route('admin.dashboard') }}">
-            <img src="{{ asset('public/assets/images/logo.jpg') }}" alt="logo" />
+            @if (!empty($headerData->square_logo))
+                <img src="{{ asset('public/storage/' . $headerData->square_logo) }}"
+                    alt="{{ $headerData->title ?? '' }}" />
+            @else
+                <img src="{{ asset('public/assets/images/logo.jpg') }}" alt="logo" />
+            @endif
         </a>
     </div>
 

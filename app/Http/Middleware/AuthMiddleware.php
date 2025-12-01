@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Header;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,7 @@ class AuthMiddleware
 
             View::share([
                 'admin' => $user,
+                'headerData' => Header::first(),
             ]);
             return $next($request);
         }

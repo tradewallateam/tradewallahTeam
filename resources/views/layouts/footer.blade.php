@@ -7,8 +7,13 @@
                    <div class="footer-item">
                        <a href="{{ route('pages.home') }}" class="p-0">
                            <h4 class="text-white" style="font-size: -webkit-xxx-large;font-family: fantasy;">
-                               <img src="{{ asset('public/assets/images/logo.jpg') }}" alt=""
-                                   style="width: 85px; border-radius:85%">
+                               @if (!empty($headerData->square_logo))
+                                   <img src="{{ asset('public/storage/' . $headerData->square_logo) }}" alt="Image"
+                                       style="width: 85px; border-radius:85%">
+                               @else
+                                   <img src="{{ asset('public/assets/images/logo.jpg') }}" alt="Image"
+                                       style="width: 85px; border-radius:85%">
+                               @endif
                                Trade<span class="text-warning">Walla</span>
                            </h4>
                        </a>

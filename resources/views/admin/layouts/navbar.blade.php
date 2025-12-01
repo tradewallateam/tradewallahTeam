@@ -1,8 +1,13 @@
   <!-- partial:partials/_navbar.html -->
   <nav class="navbar p-0 fixed-top d-flex flex-row">
       <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('public/assets/images/logo.jpg') }}"
-                  alt="logo" /></a>
+          @if (!empty($headerData->square_logo))
+              <a class="navbar-brand brand-logo-mini" href="{{ route('admin.dashboard') }}"><img
+                      src="{{ asset('public/storage/' . $headerData->square_logo) }}" alt="logo" /></a>
+          @else
+              <a class="navbar-brand brand-logo-mini" href="{{ route('admin.dashboard') }}"><img
+                      src="{{ asset('public/assets/images/logo.jpg') }}" alt="logo" /></a>
+          @endif
       </div>
       <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -70,7 +75,8 @@
                       <div class="navbar-profile">
                           <img class="img-xs rounded-circle" src="{{ asset('public/storage/' . $admin->image ?? '') }}"
                               alt="">
-                          <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ $admin->first_name ?? "Henry Klein" }}</p>
+                          <p class="mb-0 d-none d-sm-block navbar-profile-name">
+                              {{ $admin->first_name ?? 'Henry Klein' }}</p>
                           <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                       </div>
                   </a>

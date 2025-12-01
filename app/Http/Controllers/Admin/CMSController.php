@@ -7,6 +7,7 @@ use App\Models\About;
 use App\Models\AboutCart;
 use App\Models\ClientTestimonial;
 use App\Models\ContactSetting;
+use App\Models\FooterSetting;
 use App\Models\GalleryFolder;
 use App\Models\GalleryImage;
 use App\Models\GeneralSiteSetting;
@@ -133,7 +134,8 @@ class CMSController extends Controller
         $about = About::with('aboutCarts')->first();
         $services = Service::all();
         $contact = ContactSetting::first();
-        return view('admin.pages.cms.manage-page', compact('about', 'services', 'contact'));
+        $footer = FooterSetting::first();
+        return view('admin.pages.cms.manage-page', compact('about', 'services', 'contact', 'footer'));
     }
 
     public function updateAboutPage(Request $request)
@@ -710,6 +712,20 @@ class CMSController extends Controller
             return redirect()->back()->with('failed', 'Somthing error occured');
         } catch (\Throwable $th) {
             return redirect()->back()->with('failed', $th->getMessage());
+        }
+    }
+
+    public function updateFooter(Request $request)
+    {
+        try {
+
+            $footer = FooterSetting::first() ?? new FooterSetting();
+            $footer->description = $request->description;
+            $footer->save();
+
+            return back()->with('success', 'Footer setting has been updated successfully');
+        } catch (\Throwable $th) {
+            return back()->with('failed', $th->getMessage());
         }
     }
 }

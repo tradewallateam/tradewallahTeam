@@ -229,6 +229,28 @@
             </div>
         </div>
 
+        <!-- Footer Settings -->
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="cart-title">Footer Settings</div>
+                        <form action="{{ route('admin.pages.cms.update-footer-setting') }}" method="POST">
+                            @csrf
+                            <div class="row mt-4">
+                                <div class="col-md-12 mt-4">
+                                    <label for="" class="form-label">About Description</label><span
+                                        class="text-danger">*</span>
+                                    <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{ $footer->description ?? '' }}</textarea>
+                                </div>
+                            </div>
+                            <button style="float: right;" class="btn btn-primary mt-4">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

@@ -68,12 +68,12 @@
         <div class="container">
             <div class="row g-4 align-items-center">
                 <div class="col-md-6 text-center text-md-start mb-md-0">
-                    <span class="text-body"><a href="#" class="border-bottom text-white"><i
+                    <span class="text-body"><a href="#" class=" text-white"><i
                                 class="fas fa-copyright text-light me-2"></i>TradeWalla</a>, All right
                         reserved.</span>
                 </div>
                 <div class="col-md-6 text-center text-md-end text-body">
-                    Designed By <a class="border-bottom text-white" href="#">TradeWalla</a>
+                    Designed By <a class=" text-white" href="#">TradeWalla</a>
                 </div>
             </div>
         </div>

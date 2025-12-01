@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Models\ClientTestimonial;
 use App\Models\ContactSetting;
+use App\Models\FooterSetting;
 use App\Models\Header;
 use App\Models\SocialMedia;
 use Closure;
@@ -26,6 +27,7 @@ class FrontendDataMiddleware
             'socialMediaLinks' => SocialMedia::first(),
             'contact' => ContactSetting::first(),
             'testimonials' => ClientTestimonial::where('is_active', true)->get(),
+            'footer' => FooterSetting::first()
         ]);
         return $next($request);
     }

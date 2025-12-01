@@ -40,6 +40,7 @@ Route::middleware(['auth.check', 'clear.cache'])->prefix('admin')->name('admin.'
 
             Route::get('manage-page', 'managePage')->name('manage-page');
             Route::post('update-page', 'updateAboutPage')->name('update-page');
+            Route::post('update-footer-setting','updateFooter')->name('update-footer-setting'); 
 
             Route::post('add-service', 'addService')->name('add-service');
             Route::get('delete-service/{id}', 'deleteService')->name('delete-service');

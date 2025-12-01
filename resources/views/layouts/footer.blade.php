@@ -3,7 +3,7 @@
        <div class="container py-5 border-start-0 border-end-0"
            style="border: 1px solid; border-color: rgb(255, 255, 255, 0.08);">
            <div class="row g-5">
-               <div class="col-md-6 col-lg-6 col-xl-4">
+               <div class="col-md-12 col-lg-6 col-xl-5">
                    <div class="footer-item">
                        <a href="{{ route('pages.home') }}" class="p-0">
                            <h4 class="text-white" style="font-size: -webkit-xxx-large;font-family: fantasy;">
@@ -12,22 +12,13 @@
                                Trade<span class="text-warning">Walla</span>
                            </h4>
                        </a>
-                       <p class="mb-4">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit
-                           amet, consectetur adipiscing...</p>
+                       <p class="mb-4">
+                           {{ $footer->description ??
+                               'Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing...' }}
+                       </p>
                    </div>
                </div>
-               <div class="col-md-6 col-lg-6 col-xl-2">
-                   <div class="footer-item">
-                       <h4 class="text-white mb-4">Quick Links</h4>
-                       <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
-                       <a href="#"><i class="fas fa-angle-right me-2"></i> Feature</a>
-                       <a href="#"><i class="fas fa-angle-right me-2"></i> Attractions</a>
-                       <a href="#"><i class="fas fa-angle-right me-2"></i> Tickets</a>
-                       <a href="#"><i class="fas fa-angle-right me-2"></i> Blog</a>
-                       <a href="#"><i class="fas fa-angle-right me-2"></i> Contact us</a>
-                   </div>
-               </div>
-               <div class="col-md-6 col-lg-6 col-xl-3">
+               <div class="col-md-6 col-lg-2 col-xl-3">
                    <div class="footer-item">
                        <h4 class="text-white mb-4">Support</h4>
                        <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
@@ -35,10 +26,9 @@
                        <a href="#"><i class="fas fa-angle-right me-2"></i> Disclaimer</a>
                        <a href="#"><i class="fas fa-angle-right me-2"></i> Support</a>
                        <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
-                       <a href="#"><i class="fas fa-angle-right me-2"></i> Help</a>
                    </div>
                </div>
-               <div class="col-md-6 col-lg-6 col-xl-3">
+               <div class="col-md-6 col-lg-4 col-xl-4">
                    <div class="footer-item">
                        <h4 class="text-white mb-4">Contact Info</h4>
                        <div class="d-flex align-items-center">

@@ -6,7 +6,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Tradewallah | Admin Dashboard </title>
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('public/storage/' . $headerData->favicon ?? '') }}">
+    @if (!empty($headerData->favicon))
+        {
+        <link rel="icon" type="image/png" sizes="32x32"
+            href="{{ asset('public/storage/' . $headerData->favicon ?? '') }}">
+        }
+    @endif
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('public/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('public/assets/vendors/ti-icons/css/themify-icons.css') }}">

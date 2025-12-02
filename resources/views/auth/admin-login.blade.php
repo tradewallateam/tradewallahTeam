@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8">
 
-    <title>CodePen - Animated Login Form using Html &amp; CSS Only</title>
+    <title>TradeWalla | Admin Login</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
@@ -187,7 +187,7 @@
                 height: calc(20vw - 2px);
             }
 
-            .signin{
+            .signin {
                 transform: 3px;
             }
         }
@@ -237,7 +237,8 @@
                 <form action="{{ route('auth.admin.login.submit') }}" method="POST" class="form">
                     @csrf
                     <div class="inputBox">
-                        <input type="email" name="email" id="email" value="{{ old('email') }}" required><i>Email</i>
+                        <input type="email" name="email" id="email" value="{{ old('email') }}"
+                            required><i>Email</i>
                     </div>
 
                     <div class="inputBox">

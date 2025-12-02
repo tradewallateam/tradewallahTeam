@@ -243,6 +243,16 @@
                                         class="text-danger">*</span>
                                     <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{ $footer->description ?? '' }}</textarea>
                                 </div>
+                                <div class="col-md-12 mt-4">
+                                    <label for="" class="form-label">Privacy Policy</label><span
+                                        class="text-danger">*</span>
+                                    <textarea name="privacy_policy" id="editor" cols="30" class="form-control" rows="10">{{ $footer->privacy_policy ?? '' }}</textarea>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <label for="" class="form-label">Terms & Conditions</label><span
+                                        class="text-danger">*</span>
+                                    <textarea name="terms_conditions" id="editor" cols="30" class="form-control" rows="10">{{ $footer->terms_conditions ?? '' }}</textarea>
+                                </div>
                             </div>
                             <button style="float: right;" class="btn btn-primary mt-4">Submit</button>
                         </form>

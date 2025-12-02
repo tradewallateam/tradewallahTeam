@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\ContactSetting;
+use App\Models\FooterSetting;
 use App\Models\GalleryFolder;
 use App\Models\GeneralSiteSetting;
 use App\Models\Service;
@@ -69,5 +70,15 @@ class PageController extends Controller
     {
         $gallaries = GalleryFolder::get();
         return view('pages.gallery', compact('gallaries'));
+    }
+    public function privacyPolicy()
+    {
+        $footer = FooterSetting::first();
+        return view('pages.privacy-policy', compact('footer'));
+    }
+    public function termsConditions()
+    {
+        $footer = FooterSetting::first();
+        return view('pages.terms-conditions', compact('footer'));
     }
 }

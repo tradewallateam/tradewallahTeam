@@ -15,6 +15,8 @@ Route::middleware(['frontend.data'])->controller(PageController::class)->group(f
     Route::get('/faq', 'faq')->name('pages.faq');
     Route::get('/risk-disclaimer', 'riskDisclaimer')->name('pages.risk');
     Route::get('/gallery', 'gallery')->name('pages.gallery');
+    Route::get('/privacy-policy', 'privacyPolicy')->name('pages.privacy-policy');
+    Route::get('/terms-and-conditions', 'termsConditions')->name('pages.terms-conditions');
 
     Route::middleware(['member.auth'])->group(function () {
         Route::get('/dashboard', 'dashboard')->name('pages.dashboard');

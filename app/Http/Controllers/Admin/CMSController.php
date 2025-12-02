@@ -721,6 +721,8 @@ class CMSController extends Controller
 
             $footer = FooterSetting::first() ?? new FooterSetting();
             $footer->description = $request->description;
+            $footer->privacy_policy = $request->privacy_policy;
+            $footer->terms_conditions = $request->terms_conditions;
             $footer->save();
 
             return back()->with('success', 'Footer setting has been updated successfully');

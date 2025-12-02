@@ -26,8 +26,10 @@
                <div class="col-md-6 col-lg-2 col-xl-3">
                    <div class="footer-item">
                        <h4 class="text-white mb-4">Support</h4>
-                       <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
-                       <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                       <a href="{{ route('pages.privacy-policy') }}"><i class="fas fa-angle-right me-2"></i> Privacy
+                           Policy</a>
+                       <a href="{{ route('pages.terms-conditions') }}"><i class="fas fa-angle-right me-2"></i> Terms &
+                           Conditions</a>
                        <a href="#"><i class="fas fa-angle-right me-2"></i> Disclaimer</a>
                        <a href="#"><i class="fas fa-angle-right me-2"></i> Support</a>
                        <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>

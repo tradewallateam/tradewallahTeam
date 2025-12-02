@@ -7,10 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Tradewallah | Admin Dashboard </title>
     @if (!empty($headerData->favicon))
-        {
         <link rel="icon" type="image/png" sizes="32x32"
             href="{{ asset('public/storage/' . $headerData->favicon ?? '') }}">
-        }
     @endif
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('public/assets/vendors/mdi/css/materialdesignicons.min.css') }}">

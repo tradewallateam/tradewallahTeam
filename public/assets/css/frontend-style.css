@@ -154,7 +154,7 @@
 }
 
 .navbar h1 {
-    color: rgb(37, 198, 19);
+    color: #00d084;
     font-style: inherit;
     font-weight: 700;
     font-family: fangsong;
@@ -192,9 +192,9 @@
         color: black;
         font-size: x-large;
     }
-}`
+}
 
-.sticky-top.navbar-light .navbar-brand img {
+` .sticky-top.navbar-light .navbar-brand img {
     max-height: 50px;
 }
 

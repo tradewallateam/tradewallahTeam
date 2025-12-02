@@ -8,10 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @if (!empty($headerData->favicon))
-        {
         <link rel="icon" type="image/png" sizes="32x32"
             href="{{ asset('public/storage/' . $headerData->favicon ?? '') }}">
-        }
     @endif
     <meta content="" name="keywords">
     <meta content="" name="description">

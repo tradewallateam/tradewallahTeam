@@ -1,5 +1,5 @@
  <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-     <a href="{{ route('admin.dashboard') }}" class="navbar-brand p-0">
+     <a href="{{ route('pages.dashboard') }}" class="navbar-brand p-0">
          @if (!empty($headerData->square_logo))
              <img src="{{ asset('public/storage/' . $headerData->square_logo) }}" alt="Logo">
          @else

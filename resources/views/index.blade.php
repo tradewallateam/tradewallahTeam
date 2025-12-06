@@ -23,37 +23,38 @@
                                 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum velit temporibus repudiandae ipsa, eaque perspiciatis cumque incidunt tenetur sequi reiciendis.' }}
                         </p>
                         <div class="row g-4">
-                            <div class="col-md-6 col-lg-6 col-xl-6">
-                                <div class="d-flex">
-                                    <div><i class="fas fa-lightbulb fa-3x text-primary"></i></div>
-                                    <div class="ms-4">
-                                        <h4>Business Consuluting</h4>
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                            @if (!empty($about->aboutCarts))
+                                @foreach ($about->aboutCarts as $cart)
+                                    <div class="col-md-6 col-lg-6 col-xl-6">
+                                        <div class="d-flex">
+                                            <div><i class="bi bi-bookmark-heart-fill fa-3x text-primary"></i></div>
+                                            <div class="ms-4">
+                                                <h4>{{ $cart->title ?? 'Not Available' }}</h4>
+                                                <p>{{ $cart->description ?? 'Not Available' }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="col-md-6 col-lg-6 col-xl-6">
+                                    <div class="d-flex">
+                                        <div><i class="fas fa-lightbulb fa-3x text-primary"></i></div>
+                                        <div class="ms-4">
+                                            <h4>Business Consuluting</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-xl-6">
-                                <div class="d-flex">
-                                    <div><i class="bi bi-bookmark-heart-fill fa-3x text-primary"></i></div>
-                                    <div class="ms-4">
-                                        <h4>Year Of Expertise</h4>
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                                <div class="col-md-6 col-lg-6 col-xl-6">
+                                    <div class="d-flex">
+                                        <div><i class="bi bi-bookmark-heart-fill fa-3x text-primary"></i></div>
+                                        <div class="ms-4">
+                                            <h4>Year Of Expertise</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <a href="#" class="btn btn-primary rounded-pill py-3 px-5 flex-shrink-0">Discover
-                                    Now</a>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="d-flex">
-                                    <i class="fas fa-phone-alt fa-2x text-primary me-4"></i>
-                                    <div>
-                                        <h4>Call Us</h4>
-                                        <p class="mb-0 fs-5" style="letter-spacing: 1px;">+01234567890</p>
-                                    </div>
-                                </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -90,8 +91,8 @@
                 <p class="mb-0">
                     {{ $setting->service_description ??
                         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            sint dolorem autem obcaecati, ipsam mollitia hic." }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    sint dolorem autem obcaecati, ipsam mollitia hic." }}
                 </p>
             </div>
             <div class="row g-4">

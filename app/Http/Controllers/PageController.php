@@ -18,7 +18,8 @@ class PageController extends Controller
         $teams = TeamMember::where('status', true)->get();
         $setting = GeneralSiteSetting::first();
         $services = Service::where('is_active', true)->latest()->take(3)->get();
-        return view('index', compact('teams', 'setting', 'services'));
+        $about = About::with('aboutCarts')->first();
+        return view('index', compact('teams', 'setting', 'services', 'about'));
     }
 
     public function about()

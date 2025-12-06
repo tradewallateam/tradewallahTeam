@@ -15,16 +15,16 @@
                     <div class="col-xl-7 animated fadeInLeft">
                         <div class="text-sm-center text-md-end">
                             <h4 class="text-primary text-uppercase fw-bold mb-4">
-                                {{ $header->title ?? 'Welcome To TradeWalla' }}</h4>
+                                {{ $headerData->title ?? 'Welcome To TradeWalla' }}</h4>
                             <h1 class="display-4 text-uppercase text-white mb-4">
-                                {{ $header->subtitle ?? 'Invest your money with higher return' }}
+                                {{ $headerData->subtitle ?? 'Invest your money with higher return' }}
                             </h1>
                             <p class="mb-5 fs-5">
-                                {{ $header->subtitle_description ?? "Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry's standard dummy..." }}
+                                {{ $headerData->subtitle_description ?? "Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry's standard dummy..." }}
                             </p>
                             <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
                                 <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2"
-                                    href="{{ $header->video_link ?? '#' }}" target="__blank"><i
+                                    href="{{ $headerData->video_link ?? '#' }}" target="__blank"><i
                                         class="fas fa-play-circle me-2"></i>
                                     Watch Video</a>
                                 <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2"
